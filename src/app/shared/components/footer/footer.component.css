@@ -1,3 +1,13 @@
-.text-center1 {
+.footer {
+    text-align: center;
     padding-top: 10px;
+    width: 100%;
+    position: absolute;
+    height: auto;
+}
+
+@media only screen and (max-width: 340px) {
+    .footer {
+        width: 100%;
+    }
 }
