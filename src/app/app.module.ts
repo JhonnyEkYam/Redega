@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { MaterialModule } from '@app/material.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,6 +12,9 @@ import { ContadorHomeComponent } from './contador/contador-home/contador-home.co
 import { ContadorProfileComponent } from './contador/contador-profile/contador-profile.component';
 import { EncargadoProfileComponent } from './encargado/encargado-profile/encargado-profile.component';
 import { UsuarioProfileComponent } from './usuario/usuario-profile/usuario-profile.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HeaderComponent } from './shared/components/header/header.component';
+import { FooterComponent } from './shared/components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -22,11 +26,15 @@ import { UsuarioProfileComponent } from './usuario/usuario-profile/usuario-profi
     ContadorHomeComponent,
     ContadorProfileComponent,
     EncargadoProfileComponent,
-    UsuarioProfileComponent
+    UsuarioProfileComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
+    MaterialModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
