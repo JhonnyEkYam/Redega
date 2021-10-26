@@ -1,0 +1,108 @@
+.main{
+    display:flex;
+    justify-content: center;
+    align-items: start; 
+    padding-top: 4em;
+}
+
+.login{
+    width: 450px;
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+}
+.login .title{
+    color: white;
+    background: black;
+    padding: auto .5em;
+    font-size: 2.2em;
+    clip-path: polygon(1em 0%, 100% 0%, 100% 100%, 0% 100%);
+
+    display: flex;
+    justify-content: center;
+}
+.login fieldset{
+    margin: 0;
+    background: #ededed;
+    border: none;
+    
+    padding: 1.5em;
+    gap: 1em;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    font-size: 1.5em;
+    font-weight: 600;
+}
+
+.login fieldset label,
+.login fieldset label span{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.login fieldset label span{
+    align-items: center;
+}
+
+
+.login fieldset #email,
+.login fieldset #password{
+    padding: .7em 1em;
+    border: 2px solid darkgray;
+    border-radius: 6em;
+    -webkit-border-radius: 6em;
+    -moz-border-radius: 6em;
+    -ms-border-radius: 6em;
+    -o-border-radius: 6em;
+    transition: .2s ease-in-out;
+    -webkit-transition: .2s ease-in-out;
+    -moz-transition: .2s ease-in-out;
+    -ms-transition: .2s ease-in-out;
+    -o-transition: .2s ease-in-out;
+}.login fieldset #email:hover,
+.login fieldset #password:hover{
+    cursor: default;
+    border-color: black;
+}.login fieldset #email:focus,
+.login fieldset #password:focus{
+    border-color: #8f8fff;
+}
+
+.login fieldset #submit-login{
+    font-weight: inherit;
+    font-size: inherit;
+    padding: .2em 0;
+    display: flex;
+    justify-content: center;
+    background: linear-gradient(45deg, #191919 50%, #393939 50%);
+    color: white;
+    border: none;
+    background-size: 900px;
+    background-position-x: 100%;
+    transition: .4s ease-in-out;
+    -webkit-transition: .4s ease-in-out;
+    -moz-transition: .4s ease-in-out;
+    -ms-transition: .4s ease-in-out;
+    -o-transition: .4s ease-in-out;
+}
+.login fieldset #submit-login:hover{
+    cursor: pointer;
+    background-position-x: 0%;
+}
+
+
+/**TABLET*/
+@media screen and (max-width: 780px){
+    .login{
+        width: 400px;
+    }
+}
+
+/**MOVIL*/
+@media screen and (max-width: 480px){
+    .login{
+        width: 350px;   
+    }
+}
