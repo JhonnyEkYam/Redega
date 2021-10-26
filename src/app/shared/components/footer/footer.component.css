@@ -1,13 +1,11 @@
+.footer-container{
+    position: fixed;
+    bottom: 0;
+}
 .footer {
     text-align: center;
     padding-top: 10px;
     width: 100%;
     position: inherit;
     height: auto;
-}
-
-@media only screen and (max-width: 340px) {
-    .footer {
-        width: 100%;
-    }
 }

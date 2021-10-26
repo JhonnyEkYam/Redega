@@ -1,21 +1,23 @@
-/* You can add global styles to this file, and also import other style files */
-
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-}
-
-html,
-body {
-    height: 100%;
-}
-
-body {
-    margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+body{
+    min-height: 100vh;
+    position: relative;
+}
+body {
+    margin: 0;
+}
+.main{
+    padding-top: 4em;
+
+    /**PADDING para separar el MAIN del footer 55px+el doble(110px) = 165px*/
+    padding-bottom: 165px;
+}
 .headerc {
     background: #171717;
     color: #ededed;
@@ -29,11 +31,10 @@ body {
 }
 
 footer {
-    background-color: black;
-    position: inherit;
-    bottom: 0px;
+    position: relative;
+    position: absolute;
+    bottom: 0;
     width: 100%;
     height: 55px;
-    color: white;
-    text-align: center;
+    /* text-align: center; */
 }
