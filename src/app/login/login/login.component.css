@@ -36,10 +36,16 @@
     font-weight: 600;
 }
 
-.login fieldset label{
+.login fieldset label,
+.login fieldset label span{
     display: flex;
     justify-content: center;
+    flex-direction: column;
 }
+.login fieldset label span{
+    align-items: center;
+}
+
 
 .login fieldset #email,
 .login fieldset #password{
@@ -84,4 +90,19 @@
 .login fieldset #submit-login:hover{
     cursor: pointer;
     background-position-x: 0%;
+}
+
+
+/**TABLET*/
+@media screen and (max-width: 780px){
+    .login{
+        width: 400px;
+    }
+}
+
+/**MOVIL*/
+@media screen and (max-width: 480px){
+    .login{
+        width: 350px;   
+    }
 }
