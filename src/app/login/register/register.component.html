@@ -1,14 +1,16 @@
 <div class="main">
     <form action="" class="login">
         <h3 class="title">REGISTRARSE</h3>
-        <mat-form-field appearance="fill">
-            <mat-label>Input</mat-label>
-            <input matInput>
-          </mat-form-field>
+        
         <fieldset>
             <input type="hidden" name="_token" id="token" value="alfnlaks">
             <!-- Aqui pondria un angular material input -->
-            
+            <mat-form-field appearance="standard">
+                <mat-label>Standard form field</mat-label>
+                <input matInput placeholder="Placeholder">
+                <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                <mat-hint>Hint</mat-hint>
+              </mat-form-field>
             <!-- Aqui es el fin de los inputs -->
             <input type="submit" value="Iniciar sesión" id="submit-login" name="submit-login">
         </fieldset>
