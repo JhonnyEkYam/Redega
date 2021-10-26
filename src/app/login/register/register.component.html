@@ -1,17 +1,33 @@
-<div class="main">
-    <form action="" class="login">
-        <h3 class="title">REGISTRARSE</h3>
-        
-        <fieldset>
-            <input type="hidden" name="_token" id="token" value="alfnlaks">
-            <!-- Aqui pondria un angular material input -->
-            <mat-form-field appearance="standard">
-                <mat-label>Email</mat-label>
-                <input matInput placeholder="Placeholder">
-                <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-              </mat-form-field>
-            <!-- Aqui es el fin de los inputs -->
-            <input type="submit" value="Iniciar sesión" id="submit-login" name="submit-login">
-        </fieldset>
-    </form>
+<div class="login-form">
+    <mat-card>
+        <mat-card-content>
+            <h1>REGISTRO</h1>
+            <div class="example-container">
+                <mat-form-field appearance="fill">
+                    <mat-label>Enter your email</mat-label>
+                    <input matInput placeholder="pat@example.com" [formControl]="email" required>
+                    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="example-container">
+                <mat-form-field appearance="fill">
+                    <mat-label>Enter your password</mat-label>
+                    <input matInput [type]="hide ? 'password' : 'text'">
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+                </mat-form-field>
+            </div>
+            <div class="example-container">
+                <mat-form-field appearance="fill">
+                    <mat-label>Repeat your password</mat-label>
+                    <input matInput [type]="hide1 ? 'password' : 'text'">
+                    <button mat-icon-button matSuffix (click)="hide1 = !hide1" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide1">
+                <mat-icon>{{hide1 ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+                </mat-form-field>
+            </div>
+        </mat-card-content>
+        <button mat-raised-button color=primary>Iniciar Sesión</button>
+    </mat-card>
 </div>
