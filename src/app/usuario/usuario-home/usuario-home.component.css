@@ -1,0 +1,104 @@
+.main{
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2em;
+}
+
+.username{
+    padding-left: 2em;
+    font-size: 1.3em;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: black;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+}
+
+.outcomes-viewer{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    background-color: #ededed;
+    padding: 1.5em 2em;
+    width: 900px;
+}
+
+.outcomes-viewer > .details{
+    display: flex;
+    justify-content: space-between;
+    font-weight: 800;
+    font-size: 1.4em;
+    font-style: italic;
+}
+.outcomes-viewer > .details .more-btn{
+    border: none;
+    background: none;
+    font-size: 2em;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    height: 1em;
+    width: 1em;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    transition: .2s ease-in-out;
+    -webkit-transition: .2s ease-in-out;
+    -moz-transition: .2s ease-in-out;
+    -ms-transition: .2s ease-in-out;
+    -o-transition: .2s ease-in-out;
+}
+.outcomes-viewer > .details .more-btn:hover{
+    background: #ddd;
+    scale: 1.05;
+}
+
+.outcomes-viewer .amount{
+    font-size: 1.4em;
+}
+
+.outcomes-viewer .last-transactions .title{
+    font-size: 1.2em;
+    margin-bottom: 1em;
+}
+
+
+.outcomes-viewer .last-transactions .outcome{
+    padding: .5em;
+    margin-top: 1em;
+    display: flex;
+    /*justify-content: space-between;
+    */gap: 1em;
+    align-items: center;
+    transition: .2s ease-in-out;
+    -webkit-transition: .2s ease-in-out;
+    -moz-transition: .2s ease-in-out;
+    -ms-transition: .2s ease-in-out;
+    -o-transition: .2s ease-in-out;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+.outcomes-viewer .last-transactions .outcome:hover{
+    background-color: #ccc;
+}
+.outcomes-viewer .last-transactions .outcome .details{
+    display: flex;
+    flex-direction: column;
+    gap: .2em;
+    flex: 1 1 auto;
+}
+.outcomes-viewer .last-transactions .outcome .outcome-amount{
+    flex: 0 0 auto;
+}
