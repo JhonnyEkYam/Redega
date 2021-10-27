@@ -102,3 +102,31 @@
 .outcomes-viewer .last-transactions .outcome .outcome-amount{
     flex: 0 0 auto;
 }
+
+@media only screen and (max-width: 780px){
+    .outcomes-viewer{
+        width: 500px;
+    }
+}
+
+@media only screen and (max-width: 480px){
+    .outcomes-viewer{
+        width: 340px;
+    }    
+    .outcomes-viewer .last-transactions{
+        font-size: .9rem;
+    }
+    .outcomes-viewer .last-transactions .outcome{
+        border: 1px solid #ccc;
+        flex-direction: column-reverse;
+        align-items: start;
+        position: relative;
+        gap: 1em;
+    }
+    .outcomes-viewer .last-transactions .outcome .icon{
+        position: absolute;
+        top: .5em;
+        right: .5em;
+    }
+
+}
