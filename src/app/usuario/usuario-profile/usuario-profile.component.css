@@ -1,0 +1,14 @@
+.main{
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2em;
+}
+
+.username{
+    padding-left: 2em;
+    font-size: 1.3em;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: black;
+}
