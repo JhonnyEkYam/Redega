@@ -14,6 +14,7 @@
                     <input matInput placeholder="correo_actual@gmail.com" [formControl]="email" required>
                     <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
                 </mat-form-field>
+                <span class="password-section">Cambie su contraseña si lo desea</span>
                 <mat-form-field appearance="fill">
                     <mat-label>Introduzca su contraseña actual</mat-label>
                     <input matInput [type]="hide1 ? 'password' : 'text'">
@@ -31,7 +32,7 @@
                     </button>
                 </mat-form-field>
                 <mat-form-field appearance="fill">
-                    <mat-label>Repita su contraseña</mat-label>
+                    <mat-label>Repita su nueva contraseña</mat-label>
                     <input matInput [type]="hide1 ? 'password' : 'text'">
                     <button mat-icon-button matSuffix (click)="hide1 = !hide1" [attr.aria-label]="'Hide password'"
                         [attr.aria-pressed]="hide1">

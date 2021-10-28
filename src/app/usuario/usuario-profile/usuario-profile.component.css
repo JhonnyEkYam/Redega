@@ -2,7 +2,8 @@
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    gap: 2em;
+    gap: 1em;
+    padding-top: 1em;
 }
 
 .username{
@@ -30,6 +31,20 @@
     display: flex;
     flex-direction: column;
 }
+
+.password-section{
+    margin-bottom: .5em;
+    position: relative;
+}.password-section::after{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: black;
+}
+
 .btn-container{
     display:flex;
     gap: 1em;
