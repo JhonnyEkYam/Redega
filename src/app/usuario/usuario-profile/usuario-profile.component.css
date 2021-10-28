@@ -12,3 +12,25 @@
     letter-spacing: 2px;
     color: black;
 }
+
+.profile-details-container{
+    display:flex;
+    justify-content: center;
+    gap: 1.5em;
+    padding: 1em;
+}
+
+.profile-details{
+    flex: 0 1;
+    flex-basis: 700px;
+    background: #ededed;
+    padding: .7em;
+}
+.profile-details .profile-inputs{
+    display: flex;
+    flex-direction: column;
+}
+.btn-container{
+    display:flex;
+    gap: 1em;
+}
