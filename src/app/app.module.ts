@@ -21,6 +21,7 @@ import { UsuarioProfileComponent } from './usuario/usuario-profile/usuario-profi
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
+import { UsuarioOutcomesComponent } from './usuario/usuario-outcomes/usuario-outcomes.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { FooterComponent } from './shared/components/footer/footer.component';
     EncargadoProfileComponent,
     UsuarioProfileComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    UsuarioOutcomesComponent
   ],
   imports: [
     MaterialModule,
