@@ -1,61 +1,134 @@
-<div class="nav">
-  <button>Home</button>
-  <button>Gastos</button>
-  <button>Cerrar sesión</button>
-</div>
+<app-nav></app-nav>
 <div class="main">
   <div class="container">
     <ul class="dates">
-      <span>2021</span>
-      <li>Enero</li>
-      <li>Febrero</li>
-      <li>Marzo</li>
-      <li>Abril</li>
-      <li>Mayo</li>
-      <li>Junio</li>
-      <li>Julio</li>
-      <li>Agosto</li>
-      <li>Septiembre</li>
-      <li>Octubre</li>
-      <li>Noviembre</li>
-      <li>Diciembre</li>
-    </ul>
-    <ul class="date">
-      <span>Dias</span>
-      <select name="days" id="days">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-        <option value="10">10</option>
-        <option value="11">11</option>
-        <option value="12">12</option>
-        <option value="13">13</option>
-        <option value="14">14</option>
-        <option value="15">15</option>
-        <option value="16">16</option>
-        <option value="17">17</option>
-        <option value="18">18</option>
-        <option value="19">19</option>
-        <option value="20">20</option>
-        <option value="21">21</option>
-        <option value="22">22</option>
-        <option value="23">23</option>
-        <option value="24">24</option>
-        <option value="25">25</option>
-        <option value="26">26</option>
-        <option value="27">27</option>
-        <option value="28">28</option>
-        <option value="29">29</option>
-        <option value="30">30</option>
-      </select>
+      <span class="year">2021 <span class="yearly-total">$17,532</span></span>
+      <li>
+        <span class="month">Enero</span>
+        <span class="total">$5340</span>
+      </li>
+      <li>
+        <span class="month">Febrero</span>
+        <span class="total">$520</span>
+      </li>
+      <li>
+        <span class="month">Marzo</span>
+        <span class="total">$451</span>
+      </li>
+      <li>
+        <span class="month">Abril</span>
+        <span class="total">$400</span>
+      </li>
+      <li>
+        <span class="month">Mayo</span>
+        <span class="total">$2300</span>
+      </li>
+      <li>
+        <span class="month">Junio</span>
+        <span class="total">$1015</span>
+      </li>
+      <li>
+        <span class="month">Julio</span>
+        <span class="total">$5340</span>
+      </li>
+      <li>
+        <span class="month">Agosto</span>
+        <span class="total">$452</span>
+      </li>
+      <li>
+        <span class="month">Septiembre</span>
+        <span class="total">$120</span>
+      </li>
+      <li>
+        <span class="month">Octubre</span>
+        <span class="total">$3200</span>
+      </li>
+      <li>
+        <span class="month">Noviembre</span>
+        <span class="total">$50</span>
+      </li>
     </ul>
     <div class="outcomes-container">
+      <app-date-range-picker></app-date-range-picker>
+      <div class="last-transactions">
+        <div class="title">
+          Últimas transacciones
+        </div>
+
+        <!-- GASTOS -->
+
+        <div class="outcome">
+          <div class="icon">&%</div>
+          <div class="details">
+            <span class="description">GASOLINA</span>
+            <span class="date">12 de noviembre de 2021 8:45 PM</span>
+          </div>
+          <div class="outcome-amount">
+            $51550.00
+          </div>
+        </div>
+
+        <div class="outcome">
+          <div class="icon">&%</div>
+          <div class="details">
+            <span class="description">GASOLINA</span>
+            <span class="date">12 de noviembre de 2021 8:45 PM</span>
+          </div>
+          <div class="outcome-amount">
+            $5155045.00
+          </div>
+        </div>
+
+        <div class="outcome">
+          <div class="icon">&%</div>
+          <div class="details">
+            <span class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae totam facilis
+              numquam commodi fuga dolor quis quaerat quia voluptatum sit, facere quo aliquam cum cumque fugit? Quia
+              earum quis error!</span>
+            <span class="date">12 de noviembre de 2021 8:45 PM</span>
+          </div>
+          <div class="outcome-amount">
+            $550.00
+          </div>
+        </div>
+
+        <div class="outcome">
+          <div class="icon">&%</div>
+          <div class="details">
+            <span class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus, nisi.</span>
+            <span class="date">12 de noviembre de 2021 8:45 PM</span>
+          </div>
+          <div class="outcome-amount">
+            $51550.00
+          </div>
+        </div>
+
+        <div class="outcome">
+          <div class="icon">&%</div>
+          <div class="details">
+            <span class="description">Lorem ipsum dolor sit amet.</span>
+            <span class="date">12 de noviembre de 2021 8:45 PM</span>
+          </div>
+          <div class="outcome-amount">
+            $51550.00
+          </div>
+        </div>
+
+        <div class="outcome">
+          <div class="icon">&%</div>
+          <div class="details">
+            <span class="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facere amet consequuntur
+              expedita quaerat rem iste consectetur illum sed, exercitationem, ipsa consequatur error culpa quibusdam
+              hic assumenda officiis rerum fugiat qui autem. Expedita quae eveniet minus deserunt voluptatibus sed
+              accusamus architecto?</span>
+            <span class="date">12 de noviembre de 2021 8:45 PM</span>
+          </div>
+          <div class="outcome-amount">
+            $51550.00
+          </div>
+        </div>
+
+      </div>
     </div>
   </div>
 </div>
