@@ -7,10 +7,6 @@ import {FormsModule} from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import {ReactiveFormsModule} from '@angular/forms';
-/** DATES */
-import {MatDatepickerModule} from '@angular/material/datepicker';
-import { MatDateRangePicker, MatDateRangeInput,
-          MatDatepickerToggle} from '@angular/material/datepicker' 
 /** GENERALES */
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -52,8 +48,6 @@ import { UsuarioOutcomesComponent } from './usuario/usuario-outcomes/usuario-out
     MatButtonModule,
     FormsModule,
     ReactiveFormsModule,
-    MatDatepickerModule,
-    
   ],
   providers: [],
   bootstrap: [AppComponent]
