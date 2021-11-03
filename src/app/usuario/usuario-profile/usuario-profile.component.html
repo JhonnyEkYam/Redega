@@ -1,1 +1,49 @@
-<p>usuario-profile works!</p>
+<div class="main">
+    <div class="username">
+        Perfil de USUARIO
+    </div>
+    <div class="profile-details-container">
+        <mat-card class="profile-details">
+            <mat-card-content class="profile-inputs">
+                <mat-form-field appearance="fill">
+                    <mat-label>Nombre_de_usuario</mat-label>
+                    <input matInput [type]="'text'">
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>correo_actual@gmail.com</mat-label>
+                    <input matInput placeholder="correo_actual@gmail.com" [formControl]="email" required>
+                    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+                </mat-form-field>
+                <span class="password-section">Cambie su contraseña si lo desea</span>
+                <mat-form-field appearance="fill">
+                    <mat-label>Introduzca su contraseña actual</mat-label>
+                    <input matInput [type]="hide1 ? 'password' : 'text'">
+                    <button mat-icon-button matSuffix (click)="hide1 = !hide1" [attr.aria-label]="'Hide password'"
+                        [attr.aria-pressed]="hide1">
+                        <mat-icon>{{hide1 ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Proporcione una nueva contraseña</mat-label>
+                    <input matInput [type]="hide1 ? 'password' : 'text'">
+                    <button mat-icon-button matSuffix (click)="hide1 = !hide1" [attr.aria-label]="'Hide password'"
+                        [attr.aria-pressed]="hide1">
+                        <mat-icon>{{hide1 ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Repita su nueva contraseña</mat-label>
+                    <input matInput [type]="hide1 ? 'password' : 'text'">
+                    <button mat-icon-button matSuffix (click)="hide1 = !hide1" [attr.aria-label]="'Hide password'"
+                        [attr.aria-pressed]="hide1">
+                        <mat-icon>{{hide1 ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                </mat-form-field>
+            </mat-card-content>
+            <div class="btn-container">
+                <button mat-raised-button color=primary>Guardar cambios</button>
+                <button mat-raised-button color=secondary (click)="goToHome()">Cancelar y regresar</button>
+            </div>
+        </mat-card>
+    </div>
+</div>

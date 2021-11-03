@@ -7,6 +7,7 @@ import { EncargadoProfileComponent } from './encargado/encargado-profile/encarga
 import { LoginComponent } from './login/login/login.component';
 import { RegisterComponent } from './login/register/register.component';
 import { UsuarioHomeComponent } from './usuario/usuario-home/usuario-home.component';
+import { UsuarioOutcomesComponent } from './usuario/usuario-outcomes/usuario-outcomes.component';
 import { UsuarioProfileComponent } from './usuario/usuario-profile/usuario-profile.component';
 
 const routes: Routes = [
@@ -24,6 +25,7 @@ const routes: Routes = [
   // Vistas de Usuario
   {path: 'usuario/home', component: UsuarioHomeComponent},
   {path: 'usuario/profile', component: UsuarioProfileComponent},
+  {path: 'usuario/gastos', component: UsuarioOutcomesComponent}
 ];
 
 @NgModule({

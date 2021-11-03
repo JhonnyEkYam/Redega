@@ -1,5 +1,5 @@
 .login-form {
-    padding: 4rem 1rem;
+    padding: 2rem 1rem;
 }
 
 mat-card {
@@ -18,10 +18,12 @@ button {
     margin-bottom: 2rem;
 }
 
-h1 {
+
+/*h1 {
     font-family: 'Oswald', sans-serif;
     background: white;
 }
+*/
 
 .example-container .mat-form-field {
     width: 100% !important;

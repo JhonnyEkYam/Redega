@@ -7,6 +7,9 @@ import {FormsModule} from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import {ReactiveFormsModule} from '@angular/forms';
+// DATES
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';// /datetime;
 /** GENERALES */
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,6 +24,9 @@ import { UsuarioProfileComponent } from './usuario/usuario-profile/usuario-profi
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
+import { UsuarioOutcomesComponent } from './usuario/usuario-outcomes/usuario-outcomes.component';
+import { DateRangePickerComponent } from './shared/date-range-picker/date-range-picker.component';
+import { NavComponent } from './usuario/nav/nav.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +40,10 @@ import { FooterComponent } from './shared/components/footer/footer.component';
     EncargadoProfileComponent,
     UsuarioProfileComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    UsuarioOutcomesComponent,
+    DateRangePickerComponent,
+    NavComponent
   ],
   imports: [
     MaterialModule,
@@ -46,6 +55,8 @@ import { FooterComponent } from './shared/components/footer/footer.component';
     MatButtonModule,
     FormsModule,
     ReactiveFormsModule,
+    MatNativeDateModule,
+    MatDatepickerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

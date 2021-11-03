@@ -10,7 +10,7 @@
 
 .typewriter h1 {
     font-family: 'Oswald', sans-serif;
-    font-size: 28px;
+    font-size: 32px;
     overflow: hidden;
     /* Ensures the content is not revealed until the animation */
     border-right: .15em solid orange;
@@ -45,6 +45,6 @@
         border-color: transparent;
     }
     50% {
-        border-color: orange;
+        border-color: rgb(0, 0, 0);
     }
 }
