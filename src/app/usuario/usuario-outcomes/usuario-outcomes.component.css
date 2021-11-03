@@ -104,6 +104,20 @@
 }
 
 @media only screen and (max-width: 780px){
+    .main .container{
+        flex-direction: column;
+    }
+    .container .dates .year{
+        width: auto;
+    }
+
+    .dates li:active,
+    .dates li:focus,
+    .last-transactions .outcome:active,
+    .last-transactions .outcome:focus{
+        background: #ababab;
+    }
+
 }
 
 @media only screen and (max-width: 480px){
@@ -121,5 +135,10 @@
         position: absolute;
         top: .5em;
         right: .5em;
+    }
+    .last-transactions .title .date,
+    .last-transactions .title .amount{
+        display: block;
+        font-size: .8rem;
     }
 }
