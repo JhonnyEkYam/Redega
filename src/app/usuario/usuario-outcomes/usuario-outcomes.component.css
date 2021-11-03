@@ -9,6 +9,7 @@
 }
 
 .dates .year{
+    cursor: default;
     width: 170px;
     font-weight: 700;
     background: #141414;
@@ -53,15 +54,26 @@
 .dates li .month{
     flex: 1 1 auto;
 }
-
-
+.outcomes-container{ margin-bottom: 2em; padding-bottom: 1em;}
+.outcomes-container .last-transactions{
+    padding: .7em;
+    padding-bottom: 2em;
+    background: #ededed;
+    margin-bottom: 2em;
+}
 .last-transactions .title{
     font-size: 1.2em;
+    cursor: default;
     margin-bottom: 1em;
+}.last-transactions .title .date,
+.last-transactions .title .amount{
+    padding-left: 1em;
+    font-style: italic;
 }
 
 .last-transactions .outcome{
     padding: .5em;
+    cursor: default;
     margin-top: 1em;
     display: flex;
     /*justify-content: space-between;

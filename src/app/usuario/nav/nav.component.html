@@ -1,5 +1,10 @@
 <div class="nav">
-    <button>Home</button>
-    <button>Gastos</button>
-    <button>Cerrar sesión</button>
+  <div class="primary-container">
+    <button class="nav-btn" (click)="goToHome()">Home</button>
+    <!-- <button class="nav-btn" (click)="goToOutcomes()">Gastos</button> -->
+    <button class="nav-btn" (click)="goToProfile()">Perfil</button>
   </div>
+  <div class="secondary-container">
+    <button class="nav-btn" (click)="closeSession()">Cerrar sesión</button>
+  </div>
+</div>
