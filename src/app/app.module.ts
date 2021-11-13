@@ -28,10 +28,10 @@ import { UsuarioOutcomesComponent } from './usuario/usuario-outcomes/usuario-out
 import { DateRangePickerComponent } from './shared/date-range-picker/date-range-picker.component';
 import { NavComponent } from './usuario/nav/nav.component';
 //SERVICIOS FIREBASE
-import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAnalyticsModule } from '@angular/fire/compat/analytics';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { environment } from '../environments/environment';
-import { provideAuth,getAuth } from '@angular/fire/auth';
-import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 
 @NgModule({
   declarations: [
@@ -62,9 +62,9 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
     ReactiveFormsModule,
     MatNativeDateModule,
     MatDatepickerModule,
-    provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideAuth(() => getAuth()),
-    provideFirestore(() => getFirestore())
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAnalyticsModule,
+    AngularFirestoreModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

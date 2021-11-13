@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { UserService } from '@app/shared/services/user.service';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -7,14 +9,27 @@ import { FormControl, Validators } from '@angular/forms';
 })
 
 export class LoginComponent {
-  email = new FormControl('', [Validators.required, Validators.email]);
+
+  dataemail = new FormControl('', [Validators.required, Validators.email]);
+  datapassword = new FormControl('', [Validators.required, Validators.minLength(4)]);
   hide = true;
 
+  constructor(
+    public userService: UserService
+    ){}
+    
   getErrorMessage() {
-    if (this.email.hasError('required')) {
+    if (this.dataemail.hasError('required')) {
       return 'You must enter a value';
     }
 
-    return this.email.hasError('email') ? 'Not a valid email' : '';
-  }
+    return this.dataemail.hasError('email') ? 'Not a valid email' : '';
+  }/*
+  loginwithGoogle() {
+    this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+  }*/
+  login(){
+    this.userService.login(this.dataemail.value, this.datapassword.value);
+  } 
+  
 }

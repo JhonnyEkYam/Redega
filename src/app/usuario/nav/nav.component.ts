@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserService } from '@app/shared/services/user.service';
 
 @Component({
   selector: 'app-nav',
@@ -8,7 +9,8 @@ import { Router } from '@angular/router';
 })
 export class NavComponent implements OnInit {
 
-  constructor(private router:Router) { }
+  constructor(private router:Router,
+    public userService: UserService) { }
 
   ngOnInit(): void {
   }
@@ -23,6 +25,6 @@ export class NavComponent implements OnInit {
   }
 
   closeSession(){
-    this.router.navigate(['/']);
+    this.userService.logout();
   }
 }

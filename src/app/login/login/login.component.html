@@ -5,20 +5,21 @@
             <div class="example-container">
                 <mat-form-field appearance="fill">
                     <mat-label>Enter your email</mat-label>
-                    <input matInput placeholder="pat@example.com" [formControl]="email" required>
-                    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+                    <input matInput placeholder="pat@example.com" [formControl]="dataemail" required>
+                    <mat-error *ngIf="dataemail.invalid">{{getErrorMessage()}}</mat-error>
                 </mat-form-field>
             </div>
             <div class="example-container">
                 <mat-form-field appearance="fill">
                     <mat-label>Enter your password</mat-label>
-                    <input matInput [type]="hide ? 'password' : 'text'">
+                    <input matInput [type]="hide ? 'password' : 'text'" [formControl]="datapassword" required>
                     <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                 <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
               </button>
                 </mat-form-field>
             </div>
         </mat-card-content>
-        <button mat-raised-button color=primary>Iniciar Sesión</button>
+        <p class="message">Not registered? <a routerLink="/register">Create an account</a></p>
+        <button mat-raised-button color=primary (click)="login()">Iniciar Sesión</button>
     </mat-card>
 </div>
