@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "redega-system": {
+      "hosting": {
+        "bb-redega": [
+          "redega-system"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "redega-system"
+  }
+}

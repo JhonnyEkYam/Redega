@@ -27,6 +27,11 @@ import { FooterComponent } from './shared/components/footer/footer.component';
 import { UsuarioOutcomesComponent } from './usuario/usuario-outcomes/usuario-outcomes.component';
 import { DateRangePickerComponent } from './shared/date-range-picker/date-range-picker.component';
 import { NavComponent } from './usuario/nav/nav.component';
+//SERVICIOS FIREBASE
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideAuth,getAuth } from '@angular/fire/auth';
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 
 @NgModule({
   declarations: [
@@ -56,7 +61,10 @@ import { NavComponent } from './usuario/nav/nav.component';
     FormsModule,
     ReactiveFormsModule,
     MatNativeDateModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore())
   ],
   providers: [],
   bootstrap: [AppComponent]
