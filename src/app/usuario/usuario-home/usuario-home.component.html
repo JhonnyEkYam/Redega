@@ -2,9 +2,16 @@
 <div *ngIf="auth.user | async as user; else showLogin">
 
     <div class="main">
-        <div class="username">
-            <h1>Hello {{ user.email }}!</h1>
+        <div class="order">
         </div>
+        <mat-grid-list cols="2" rowHeight="60px">
+            <mat-grid-tile class="username">
+                <h1>Hello </h1>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <h1>{{ user.email }}!</h1>
+            </mat-grid-tile>
+        </mat-grid-list>
         <div>
             Ultima Conexión hace: {{user.metadata.lastSignInTime}}
         </div>

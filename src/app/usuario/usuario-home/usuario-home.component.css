@@ -1,24 +1,52 @@
-.main{
+.main {
     display: flex;
     flex-direction: column;
     align-items: stretch;
     gap: 2em;
 }
 
-.username{
+.username {
     padding-left: 2em;
     font-size: 1.3em;
-    font-weight: 600;
+    font-weight: 500;
     letter-spacing: 2px;
     color: black;
+    height: 20px;
+    background-color: #51d437;
+    width: 130vh;
+    /* shape transformation */
+    transform: translateX(-10px) skewX(-20deg);
 }
 
-.container{
+.username2 {
+    background-color: rgb(216, 64, 64);
+    width: 20px;
+    /* shape transformation */
+    transform: skewX(-20deg);
+}
+
+.username h1 {
+    margin: 0;
+    /* animation h1 start */
+    animation-name: entranceAnimation;
+    animation-duration: 3s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes entranceAnimation {
+    from {}
+    to {}
+}
+
+
+/* animation h1 end  */
+
+.container {
     display: flex;
     justify-content: center;
 }
 
-.outcomes-viewer{
+.outcomes-viewer {
     display: flex;
     flex-direction: column;
     gap: 1em;
@@ -27,14 +55,15 @@
     width: 800px;
 }
 
-.outcomes-viewer > .details{
+.outcomes-viewer>.details {
     display: flex;
     justify-content: space-between;
     font-weight: 800;
     font-size: 1.4em;
     font-style: italic;
 }
-.outcomes-viewer > .details .more-btn{
+
+.outcomes-viewer>.details .more-btn {
     border: none;
     background: none;
     font-size: 2em;
@@ -57,27 +86,28 @@
     -ms-transition: .2s ease-in-out;
     -o-transition: .2s ease-in-out;
 }
-.outcomes-viewer > .details .more-btn:hover{
+
+.outcomes-viewer>.details .more-btn:hover {
     background: #ddd;
     scale: 1.05;
 }
 
-.outcomes-viewer .amount{
+.outcomes-viewer .amount {
     font-size: 1.4em;
 }
 
-.outcomes-viewer .last-transactions .title{
+.outcomes-viewer .last-transactions .title {
     font-size: 1.2em;
     margin-bottom: 1em;
 }
 
-
-.outcomes-viewer .last-transactions .outcome{
+.outcomes-viewer .last-transactions .outcome {
     padding: .5em;
     margin-top: 1em;
     display: flex;
     /*justify-content: space-between;
-    */gap: 1em;
+    */
+    gap: 1em;
     align-items: center;
     transition: .2s ease-in-out;
     -webkit-transition: .2s ease-in-out;
@@ -90,43 +120,45 @@
     -ms-border-radius: 10px;
     -o-border-radius: 10px;
 }
-.outcomes-viewer .last-transactions .outcome:hover{
+
+.outcomes-viewer .last-transactions .outcome:hover {
     background-color: #ccc;
 }
-.outcomes-viewer .last-transactions .outcome .details{
+
+.outcomes-viewer .last-transactions .outcome .details {
     display: flex;
     flex-direction: column;
     gap: .2em;
     flex: 1 1 auto;
 }
-.outcomes-viewer .last-transactions .outcome .outcome-amount{
+
+.outcomes-viewer .last-transactions .outcome .outcome-amount {
     flex: 0 0 auto;
 }
 
-@media only screen and (max-width: 780px){
-    .outcomes-viewer{
+@media only screen and (max-width: 780px) {
+    .outcomes-viewer {
         width: 500px;
     }
 }
 
-@media only screen and (max-width: 480px){
-    .outcomes-viewer{
+@media only screen and (max-width: 480px) {
+    .outcomes-viewer {
         width: 340px;
-    }    
-    .outcomes-viewer .last-transactions{
+    }
+    .outcomes-viewer .last-transactions {
         font-size: .9rem;
     }
-    .outcomes-viewer .last-transactions .outcome{
+    .outcomes-viewer .last-transactions .outcome {
         border: 1px solid #ccc;
         flex-direction: column-reverse;
         align-items: start;
         position: relative;
         gap: 1em;
     }
-    .outcomes-viewer .last-transactions .outcome .icon{
+    .outcomes-viewer .last-transactions .outcome .icon {
         position: absolute;
         top: .5em;
         right: .5em;
     }
-
 }
