@@ -14,8 +14,6 @@ import { Router } from '@angular/router';
         private router: Router,
         ) { this.check()}
 
-    
-
     check(){
         if(this.auth.currentUser == null){
             this.router.navigate(['/']);
@@ -26,7 +24,6 @@ import { Router } from '@angular/router';
     }
 
     login(dataemail:any,datapassword:any){
-        console.log(dataemail,datapassword);
         this.auth.signInWithEmailAndPassword(dataemail, datapassword)
       .then((userCredential) => {
         // Signed in
@@ -65,7 +62,7 @@ import { Router } from '@angular/router';
         })
       }
     userinfo(){
-        return this.auth.currentUser;
+        return this.auth.user;
     }
 
 }

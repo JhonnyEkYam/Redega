@@ -3,6 +3,10 @@ import { Router } from '@angular/router';
 import { UserService } from '@app/shared/services/user.service';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import firebase from 'firebase/compat/app';
+//
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
+import { Observable } from 'rxjs';
+import { Usuarios} from '@app/shared/utils/users.interface';
 
 @Component({
   selector: 'app-usuario-home',
@@ -11,19 +15,32 @@ import firebase from 'firebase/compat/app';
 })
 export class UsuarioHomeComponent implements OnInit {
 
+  private usuariosCollection: AngularFirestoreCollection<Usuarios>;
+  usuarios: Observable<Usuarios[]>;
+  
   constructor(private router:Router,
     public userService: UserService,
-    public auth: AngularFireAuth) { }
+    public auth: AngularFireAuth,
+    private afs: AngularFirestore) 
+    {
+    this.usuariosCollection = afs.collection<Usuarios>('usuarios');
+    this.usuarios = this.usuariosCollection.valueChanges(); 
+    }
+
+    addItem(usuarios: Usuarios) {
+      this.usuariosCollection.add(usuarios);
+    }
 
   ngOnInit(): void {
-    this.userService.userinfo();
+//    this.getuser();
   }
 
   goToOutcomes(){
     this.router.navigate(['/usuario/gastos']);
   }
-  /*getuser(){
-    this.userService.userinfo();
-  }*/
+
+  getuser(){
+     return this.userService.userinfo();
+  }
 
 }
