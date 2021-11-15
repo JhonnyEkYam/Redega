@@ -1,20 +1,23 @@
-.nav{
+.nav {
     display: flex;
     background: #222;
     color: #fff;
     gap: 1em;
 }
+
 .primary-container,
-.secondary-container{
+.secondary-container {
     display: flex;
     gap: 1em;
 }
-.primary-container{
+
+.primary-container {
     flex: 1 1 auto;
     padding-left: 1em;
 }
+
 .primary-container .nav-btn,
-.secondary-container .nav-btn{
+.secondary-container .nav-btn {
     flex-basis: 6rem;
     display: flex;
     justify-content: center;
@@ -32,15 +35,19 @@
     -moz-transition: .2s ease-in-out;
     -ms-transition: .2s ease-in-out;
     -o-transition: .2s ease-in-out;
-}.primary-container .nav-btn:hover,
-.secondary-container .nav-btn:hover{
+}
+
+.primary-container .nav-btn:hover,
+.secondary-container .nav-btn:hover {
     background: #646464;
-}.primary-container .nav-btn:active,
-.secondary-container .nav-btn:active{
+}
+
+.primary-container .nav-btn:active,
+.secondary-container .nav-btn:active {
     background: #848484;
 }
 
-.nav-btn::after{
+.nav-btn::after {
     content: '';
     position: absolute;
     top: 0;
@@ -59,7 +66,9 @@
     -moz-transition: .2s ease-in-out;
     -ms-transition: .2s ease-in-out;
     -o-transition: .2s ease-in-out;
-}.nav-btn:hover::after{
+}
+
+.nav-btn:hover::after {
     transform: translateX(100%);
     -webkit-transform: translateX(100%);
     -moz-transform: translateX(100%);
@@ -67,6 +76,6 @@
     -o-transform: translateX(100%);
 }
 
-.secondary-container .nav-btn{
+.secondary-container .nav-btn {
     background: #343434;
 }

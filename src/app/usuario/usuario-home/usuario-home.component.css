@@ -2,44 +2,36 @@
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    gap: 2em;
-}
-
-.username {
-    padding-left: 2em;
-    font-size: 1.3em;
-    font-weight: 500;
-    letter-spacing: 2px;
-    color: black;
-    height: 20px;
-    background-color: #51d437;
-    width: 130vh;
-    /* shape transformation */
-    transform: translateX(-10px) skewX(-20deg);
-}
-
-.username2 {
-    background-color: rgb(216, 64, 64);
-    width: 20px;
-    /* shape transformation */
-    transform: skewX(-20deg);
 }
 
 .username h1 {
+    letter-spacing: 2px;
     margin: 0;
-    /* animation h1 start */
+}
+
+.username {
+    font-size: 1.3em;
+    font-weight: 500;
+    color: black;
+    text-align: center;
+    margin-bottom: 18px;
+    transform: translate(-100%);
+    /* animation start */
     animation-name: entranceAnimation;
     animation-duration: 3s;
+    animation-delay: 1.5s;
     animation-fill-mode: forwards;
 }
 
 @keyframes entranceAnimation {
     from {}
-    to {}
+    to {
+        transform: translateX(0.9px);
+    }
 }
 
 
-/* animation h1 end  */
+/* animation end  */
 
 .container {
     display: flex;
