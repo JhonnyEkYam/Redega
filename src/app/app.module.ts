@@ -5,11 +5,15 @@ import { MaterialModule } from '@app/material.module';
 import { MatFormFieldModule } from '@angular/material/form-field'; 
 import {FormsModule} from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
-import { MatButtonModule } from '@angular/material/button';
 import {ReactiveFormsModule} from '@angular/forms';
+import {MatDialogModule} from "@angular/material/dialog";
+//icons y botones
+import { MatButtonModule } from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
 // DATES
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';// /datetime;
+
 /** GENERALES */
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -33,6 +37,7 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAnalyticsModule } from '@angular/fire/compat/analytics';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { environment } from '../environments/environment';
+import { NewOutcomeComponent } from './general/testing/new-outcome/new-outcome.component';
 
 
 @NgModule({
@@ -51,7 +56,8 @@ import { environment } from '../environments/environment';
     UsuarioOutcomesComponent,
     DateRangePickerComponent,
     NavComponent,
-    TestingComponent
+    TestingComponent,
+    NewOutcomeComponent
   ],
   imports: [
     MaterialModule,
@@ -61,6 +67,8 @@ import { environment } from '../environments/environment';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    MatIconModule,
+    MatDialogModule,
     FormsModule,
     ReactiveFormsModule,
     MatNativeDateModule,
