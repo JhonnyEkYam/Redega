@@ -27,12 +27,13 @@ import { FooterComponent } from './shared/components/footer/footer.component';
 import { UsuarioOutcomesComponent } from './usuario/usuario-outcomes/usuario-outcomes.component';
 import { DateRangePickerComponent } from './shared/date-range-picker/date-range-picker.component';
 import { NavComponent } from './usuario/nav/nav.component';
+import { TestingComponent } from './general/testing/testing.component';
 //SERVICIOS FIREBASE
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAnalyticsModule } from '@angular/fire/compat/analytics';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { environment } from '../environments/environment';
-import { TestingComponent } from './general/testing/testing.component';
+
 
 @NgModule({
   declarations: [

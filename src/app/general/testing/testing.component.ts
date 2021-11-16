@@ -1,4 +1,8 @@
+// import { AngularFirestore } from "@angular/fire/firestore";
+// import { AngularFireStore, AngularFirestore, Firestore } from '@angular/fire/firestore';
+import {Observable} from "rxjs";
 import { Component, OnInit } from '@angular/core';
+import { AngularFirestore } from "@angular/fire/compat/firestore";
 
 @Component({
   selector: 'app-testing',
@@ -6,9 +10,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./testing.component.css']
 })
 export class TestingComponent implements OnInit {
-
-  constructor() { }
-
+  outcomes: Observable<any[]>;
+  
+  constructor(store: AngularFirestore) {
+    this.outcomes = store.collection('outcomes').valueChanges();
+  }
   ngOnInit(): void {
   }
 
