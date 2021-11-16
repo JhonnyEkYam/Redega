@@ -4,7 +4,7 @@
             <div class="icon">&%</div>
             <div class="details">
               <span class="description">{{outcome.concept}}</span>
-              <span class="date">{{outcome.date_outcome }}</span>
+              <span class="date">{{outcome.date_outcome.seconds*1000 | date: 'dd-MM-y, h:mm a'}}</span>
             </div>
             <div class="outcome-amount">
               ${{outcome.amount}}
