@@ -32,6 +32,7 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAnalyticsModule } from '@angular/fire/compat/analytics';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { environment } from '../environments/environment';
+import { TestingComponent } from './general/testing/testing.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { environment } from '../environments/environment';
     FooterComponent,
     UsuarioOutcomesComponent,
     DateRangePickerComponent,
-    NavComponent
+    NavComponent,
+    TestingComponent
   ],
   imports: [
     MaterialModule,
