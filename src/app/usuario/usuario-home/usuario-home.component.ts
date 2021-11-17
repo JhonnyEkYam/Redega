@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { UserService } from '@app/shared/services/user.service';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import firebase from 'firebase/compat/app';
+import { StorageService } from '@app/services/storage.service';
+
 
 @Component({
   selector: 'app-usuario-home',
@@ -13,7 +15,8 @@ export class UsuarioHomeComponent implements OnInit {
 
   constructor(private router:Router,
     public userService: UserService,
-    public auth: AngularFireAuth) { }
+    public auth: AngularFireAuth,
+    private storageService:StorageService) { }
 
   ngOnInit(): void {
     this.userService.userinfo();
@@ -22,6 +25,19 @@ export class UsuarioHomeComponent implements OnInit {
   goToOutcomes(){
     this.router.navigate(['/usuario/gastos']);
   }
+  // cargado de imagenes start
+  imagenes: any[]=[];
+  cargarImagen(event:any){
+    let archivos=event.target.files;
+    let reader=new FileReader();
+    reader.readAsDataURL(archivos[0]);
+    reader.onloadend = ()=>{
+      console.log(reader.result);
+      this.imagenes.push(reader.result);
+
+    }
+  }
+  // cargar imagen end
   /*getuser(){
     this.userService.userinfo();
   }*/

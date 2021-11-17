@@ -4,9 +4,15 @@
     <div class="main">
         <div class="username">
             <h1>Hello {{ user.email }}!</h1>
-            <br> Ultima Conexión hace: {{user.metadata.lastSignInTime}}
+            <div>
+                Ultima Conexión hace: {{user.metadata.lastSignInTime}}
+            </div>
         </div>
-        <div>
+        <div class="add-task">
+            <input id="fileUpload" type="file" accept=".png, .jpg, .jpeg" multiple (change)="cargarImagen($event)">
+            <p>Subir una imagen de un gasto</p>
+            <label for="fileUpload" class="custom-btn btn-6"><span>Subir</span></label>
+            <!-- <img src="{{imagenes[0]}}" alt=""> -->
 
         </div>
         <div class="container">
