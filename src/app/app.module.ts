@@ -13,7 +13,8 @@ import {MatIconModule} from '@angular/material/icon';
 // DATES
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';// /datetime;
-
+// tablas
+import {MatGridListModule} from '@angular/material/grid-list';
 /** GENERALES */
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -76,6 +77,7 @@ import { NewOutcomeComponent } from './general/testing/new-outcome/new-outcome.c
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAnalyticsModule,
     AngularFirestoreModule,
+    MatGridListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

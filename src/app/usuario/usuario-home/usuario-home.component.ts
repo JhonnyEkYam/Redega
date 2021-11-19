@@ -7,6 +7,8 @@ import firebase from 'firebase/compat/app';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
 import { Usuarios} from '@app/shared/utils/users.interface';
+import { StorageService } from '@app/services/storage.service';
+
 
 @Component({
   selector: 'app-usuario-home',
@@ -14,22 +16,11 @@ import { Usuarios} from '@app/shared/utils/users.interface';
   styleUrls: ['./usuario-home.component.css']
 })
 export class UsuarioHomeComponent implements OnInit {
-
-  private usuariosCollection: AngularFirestoreCollection<Usuarios>;
-  usuarios: Observable<Usuarios[]>;
   
   constructor(private router:Router,
     public userService: UserService,
     public auth: AngularFireAuth,
-    private afs: AngularFirestore) 
-    {
-    this.usuariosCollection = afs.collection<Usuarios>('usuarios');
-    this.usuarios = this.usuariosCollection.valueChanges(); 
-    }
-
-    addItem(usuarios: Usuarios) {
-      this.usuariosCollection.add(usuarios);
-    }
+    private storageService:StorageService) { }
 
   ngOnInit(): void {
 //    this.getuser();
@@ -38,9 +29,21 @@ export class UsuarioHomeComponent implements OnInit {
   goToOutcomes(){
     this.router.navigate(['/usuario/gastos']);
   }
+  // cargado de imagenes start
+  imagenes: any[]=[];
+  cargarImagen(event:any){
+    let archivos=event.target.files;
+    let reader=new FileReader();
+    reader.readAsDataURL(archivos[0]);
+    reader.onloadend = ()=>{
+      console.log(reader.result);
+      this.imagenes.push(reader.result);
 
-  getuser(){
-     return this.userService.userinfo();
+    }
   }
+  // cargar imagen end
+  /*getuser(){
+    this.userService.userinfo();
+  }*/
 
 }
