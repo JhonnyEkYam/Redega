@@ -5,16 +5,17 @@
         <div class="username">
             <h1>Hello {{ user.email }}!</h1>
             <div>
-                Ultima Conexión hace: {{user.metadata.lastSignInTime}}
+                Ultima Conexión el: {{user.metadata.lastSignInTime}}
             </div>
         </div>
-        <div class="add-task">
+        <!--
+            <div class="add-task">
             <input id="fileUpload" type="file" accept=".png, .jpg, .jpeg" multiple (change)="cargarImagen($event)">
             <p>Subir una imagen de un gasto</p>
             <label for="fileUpload" class="custom-btn btn-6"><span>Subir</span></label>
-            <!-- <img src="{{imagenes[0]}}" alt=""> -->
-
-        </div>
+            <!--a -->
+        <!--<img src="{{imagenes[0]}}" alt="">
+        </div>-->
         <div class="container">
             <div class="outcomes-viewer">
                 <div class="details">
@@ -47,7 +48,7 @@
                             <span class="date">12 de noviembre de 2021 8:45 PM</span>
                         </div>
                         <div class="outcome-amount">
-                            $5155045.00
+                            $545.00
                         </div>
                     </div>
 
@@ -69,7 +70,7 @@
                             <span class="date">12 de noviembre de 2021 8:45 PM</span>
                         </div>
                         <div class="outcome-amount">
-                            $51550.00
+                            $660.00
                         </div>
                     </div>
 
@@ -80,7 +81,7 @@
                             <span class="date">12 de noviembre de 2021 8:45 PM</span>
                         </div>
                         <div class="outcome-amount">
-                            $51550.00
+                            $750.00
                         </div>
                     </div>
 
@@ -91,7 +92,7 @@
                             <span class="date">12 de noviembre de 2021 8:45 PM</span>
                         </div>
                         <div class="outcome-amount">
-                            $51550.00
+                            $550.00
                         </div>
                     </div>
 
@@ -102,5 +103,4 @@
 </div>
 <ng-template #showLogin>
     <p>Please login.</p>
-
 </ng-template>

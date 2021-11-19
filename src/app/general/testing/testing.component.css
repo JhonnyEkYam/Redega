@@ -1,0 +1,31 @@
+.outcome{
+    padding: .5em;
+    cursor: default;
+    margin-top: 1em;
+    display: flex;
+    /*justify-content: space-between;
+    */gap: 1em;
+    align-items: center;
+    transition: .2s ease-in-out;
+    -webkit-transition: .2s ease-in-out;
+    -moz-transition: .2s ease-in-out;
+    -ms-transition: .2s ease-in-out;
+    -o-transition: .2s ease-in-out;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+.outcome:hover{
+    background-color: #ccc;
+}
+.outcome .details{
+    display: flex;
+    flex-direction: column;
+    gap: .2em;
+    flex: 1 1 auto;
+}
+.outcome .outcome-amount{
+    flex: 0 0 auto;
+}

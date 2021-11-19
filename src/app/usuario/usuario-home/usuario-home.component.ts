@@ -3,6 +3,10 @@ import { Router } from '@angular/router';
 import { UserService } from '@app/shared/services/user.service';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import firebase from 'firebase/compat/app';
+//
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
+import { Observable } from 'rxjs';
+import { Usuarios} from '@app/shared/utils/users.interface';
 import { StorageService } from '@app/services/storage.service';
 
 
@@ -12,14 +16,14 @@ import { StorageService } from '@app/services/storage.service';
   styleUrls: ['./usuario-home.component.css']
 })
 export class UsuarioHomeComponent implements OnInit {
-
+  
   constructor(private router:Router,
     public userService: UserService,
     public auth: AngularFireAuth,
     private storageService:StorageService) { }
 
   ngOnInit(): void {
-    this.userService.userinfo();
+//    this.getuser();
   }
 
   goToOutcomes(){

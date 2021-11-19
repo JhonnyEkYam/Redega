@@ -1,0 +1,19 @@
+<div class="app-container">
+    <button mat-button color="primary" (click)="showCreateBookDialog()">
+      <span><mat-icon>+</mat-icon>Add Book</span>
+    </button>
+</div>
+<div class="flex-col">
+    <div class="text" *ngFor="let outcome of outcomes | async">
+        <div class="outcome">
+            <div class="icon">&%</div>
+            <div class="details">
+              <span class="description">{{outcome.concept}}</span>
+              <span class="date">{{outcome.date_outcome.seconds*1000 | date: 'dd-MM-y, h:mm a'}}</span>
+            </div>
+            <div class="outcome-amount">
+              ${{outcome.amount}}
+            </div>
+          </div>
+    </div>
+  </div>
