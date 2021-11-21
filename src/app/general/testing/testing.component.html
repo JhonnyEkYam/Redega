@@ -1,7 +1,10 @@
 <div class="app-container">
-    <button mat-button color="primary" (click)="showCreateDialog()">
-      <span><mat-icon>+</mat-icon>Add Book</span>
-    </button>
+  <button mat-button color="primary" (click)="showCreateDialog()">
+    <span><mat-icon>+</mat-icon>Add Book</span>
+  </button>
+  <button mat-button color="primary" (click)="seeDeleted()">
+    <span><mat-icon>></mat-icon>Ver más gastos</span>
+  </button>
 </div>
 <div class="flex-col">
     <div class="text" (click)="showEditDialog(outcome)" *ngFor="let outcome of outcomes | async">
@@ -15,6 +18,10 @@
             <div class="outcome-amount">
               ${{outcome.amount}}
             </div>
+            
+            <button mat-button color="primary" (click)="deleteLog(outcome.id)">
+              <span><mat-icon>O</mat-icon></span>
+            </button>
           </div>
     </div>
   </div>
