@@ -39,6 +39,7 @@ import { AngularFireAnalyticsModule } from '@angular/fire/compat/analytics';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { environment } from '../environments/environment';
 import { NewOutcomeComponent } from './general/testing/new-outcome/new-outcome.component';
+import { EditOutcomeComponent } from './general/testing/edit-outcome/edit-outcome.component';
 
 
 @NgModule({
@@ -58,7 +59,8 @@ import { NewOutcomeComponent } from './general/testing/new-outcome/new-outcome.c
     DateRangePickerComponent,
     NavComponent,
     TestingComponent,
-    NewOutcomeComponent
+    NewOutcomeComponent,
+    EditOutcomeComponent
   ],
   imports: [
     MaterialModule,
