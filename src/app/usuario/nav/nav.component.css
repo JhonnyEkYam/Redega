@@ -18,7 +18,7 @@
 
 .primary-container .nav-btn,
 .secondary-container .nav-btn {
-    flex-basis: 6rem;
+    /* flex-basis: 6rem; */
     display: flex;
     justify-content: center;
     cursor: pointer;
