@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { UserService } from '@app/shared/services/user.service';
 
 @Component({
@@ -10,14 +11,19 @@ import { UserService } from '@app/shared/services/user.service';
 
 export class LoginComponent {
 
+  loading= false;
+
   dataemail = new FormControl('', [Validators.required, Validators.email]);
   datapassword = new FormControl('', [Validators.required, Validators.minLength(4)]);
   hide = true;
 
   constructor(
-    public userService: UserService
+    public userService: UserService,
+    public router:Router
     ){}
     
+
+
   getErrorMessage() {
     if (this.dataemail.hasError('required')) {
       return 'You must enter a value';
@@ -30,6 +36,15 @@ export class LoginComponent {
   }*/
   login(){
     this.userService.login(this.dataemail.value, this.datapassword.value);
-  } 
+    this.loadingPhase();
+  }
+  
+   
+  public loadingPhase(){
+     this.loading=true;
+     setTimeout(() => {
+      this.router.navigate(['usuario/home']);
+     }, 1500);
+    } 
   
 }

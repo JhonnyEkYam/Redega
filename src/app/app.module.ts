@@ -10,8 +10,10 @@ import {ReactiveFormsModule} from '@angular/forms';
 // DATES
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';// /datetime;
-// tablas
+// GRIDS
 import {MatGridListModule} from '@angular/material/grid-list';
+// loding components
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 /** GENERALES */
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -67,7 +69,9 @@ import { environment } from '../environments/environment';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAnalyticsModule,
     AngularFirestoreModule,
-    MatGridListModule
+    MatGridListModule,
+    MatProgressSpinnerModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
