@@ -36,14 +36,13 @@ export class LoginComponent {
   }*/
   login(){
     this.userService.login(this.dataemail.value, this.datapassword.value);
-    this.loadingPhase();
   }
   
    
   public loadingPhase(){
      this.loading=true;
      setTimeout(() => {
-      this.router.navigate(['usuario/home']);
+      this.login();
      }, 1500);
     } 
   
