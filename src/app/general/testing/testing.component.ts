@@ -10,30 +10,49 @@ import { EditOutcomeComponent } from "./edit-outcome/edit-outcome.component";
   templateUrl: './testing.component.html',
   styleUrls: ['./testing.component.css']
 })
+
 export class TestingComponent implements OnInit {
-  outcomes: Observable<any[]>;
-  // private readonly itemsRef: AngularFirestoreCollection<Item>;
-  // private readonly profileRef: AngularFirestoreDocument<Profile>;
-  // observables for template
-  // items: Observable<Item[]>;
-  // profile: Observable<Profile>;
+  activeOutcomes: Observable<any[]>;
+  inactiveOutcomes: Observable<any[]>;
+  outcomes: any;
   private store: AngularFirestore;
+  private statusOutcomesView = 1;
+  total:number = 0;
 
   constructor(public dialog: MatDialog, store: AngularFirestore) {
     this.store = store;
-    
-    this.outcomes = this.store.collection('outcomes', ref=>ref.where('status', '==', 1)).valueChanges({
+    this.activeOutcomes = this.store.collection('outcomes', ref=>ref.where('status', '==', 1)).valueChanges({
       idField: 'id',
     });
-    // this.itemsRef = this.store.collection('items', ref => ref.where('user', '==', 'davideast').limit(10));
-    // this.items = this.itemsRef.valueChanges().map(snap => snap.docs.map(data => doc.data()));
-    // this.items = from(this.itemsRef); // you can also do this with no mapping
-    // this.profileRef = afs.doc('users/davideast');
-    // this.profile = this.profileRef.valueChanges();
+    this.inactiveOutcomes =  this.store.collection('outcomes', ref=>ref.where('status', '==', 0)).valueChanges({
+      idField: 'id',
+    });
+    this.outcomes = this.activeOutcomes;
+    this.setTotal();
   }
-  
   ngOnInit() {}
 
+  setTotal(){
+      this.outcomes.forEach((outcomes: any[]) => {
+        if(outcomes[0].status == this.statusOutcomesView){
+          this.total=0;
+          outcomes.forEach(outcome=>{
+            this.total += Number(outcome.amount);
+          })
+          return;  
+        }
+      })
+  }
+  setView() {
+    this.activeOutcomes = this.store.collection('outcomes', ref=>ref.where('status', '==', 1)).valueChanges({
+      idField: 'id',
+    });
+    this.inactiveOutcomes =  this.store.collection('outcomes', ref=>ref.where('status', '==', 0)).valueChanges({
+      idField: 'id',
+    });
+    this.outcomes = (this.statusOutcomesView > 0) ? this.activeOutcomes : this.inactiveOutcomes;
+    this.setTotal();
+  }
   showCreateDialog(): void {
     const dialogRef = this.dialog.open(NewOutcomeComponent, {
       width: '600px'
@@ -43,8 +62,9 @@ export class TestingComponent implements OnInit {
       newOutcome.date_log = new Date();
       newOutcome.date_update = new Date();
       newOutcome.photo = 'default.jpg';
-      newOutcome.status = '1';
+      newOutcome.status = Number(1);
       this.store.collection('outcomes').add(newOutcome);
+      this.setView()
     });
   }
 
@@ -62,19 +82,23 @@ export class TestingComponent implements OnInit {
         date_update: new Date(),
         photo: editedOutcome.photo
       });
+      this.setView();
     });
   }
-  deleteLog(idOutcome: string): void {
+
+  deleteLog(idOutcome: string, statusLog: number): void {
     const updatedDoc = this.store.collection('outcomes');
     updatedDoc.doc(idOutcome).update({
-      status: 0
+      status: Number(statusLog>0?0:1)
     });
+    this.setTotal();
   }
-  seeDeleted(){
-    this.outcomes = this.store.collection('outcomes', ref=>ref.where('status', '==', 0)).valueChanges({
-      idField: 'id',
-    });
+
+  shiftOutcomesView(){
+    this.statusOutcomesView = this.statusOutcomesView>0 ? 0: 1;
+    this.setView();
   }
+
   public printDate(dateOrTimestamps: any): any {
     if (dateOrTimestamps.seconds) return new Date(dateOrTimestamps.seconds * 1000).toDateString();
     return dateOrTimestamps.toDateString();

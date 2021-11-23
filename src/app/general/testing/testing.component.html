@@ -2,13 +2,14 @@
   <button mat-button color="primary" (click)="showCreateDialog()">
     <span><mat-icon>+</mat-icon>Add Book</span>
   </button>
-  <button mat-button color="primary" (click)="seeDeleted()">
-    <span><mat-icon>></mat-icon>Ver más gastos</span>
+  <button mat-button color="primary" (click)="shiftOutcomesView()">
+    <span><mat-icon>></mat-icon>Ver otros gastos</span>
   </button>
+  <h4> Total: {{total}}</h4>
 </div>
 <div class="flex-col">
-    <div class="text" (click)="showEditDialog(outcome)" *ngFor="let outcome of outcomes | async">
-        <div class="outcome">
+    <div class="text" *ngFor="let outcome of outcomes | async">
+        <div class="outcome {{'status-'+outcome.status}}">
             <div class="icon">&%</div>
             <div class="details">
               <span class="description">{{outcome.concept}}</span>
@@ -19,8 +20,11 @@
               ${{outcome.amount}}
             </div>
             
-            <button mat-button color="primary" (click)="deleteLog(outcome.id)">
+            <button mat-button color="primary" (click)="deleteLog(outcome.id, outcome.status)">
               <span><mat-icon>O</mat-icon></span>
+            </button>
+            <button mat-button color="primary" (click)="showEditDialog(outcome)">
+              <span><mat-icon>Q</mat-icon></span>
             </button>
           </div>
     </div>
