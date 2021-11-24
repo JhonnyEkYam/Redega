@@ -5,6 +5,8 @@ import { NewOutcomeComponent } from "./new-outcome/new-outcome.component";
 import { MatDialog } from '@angular/material/dialog';
 import { EditOutcomeComponent } from "./edit-outcome/edit-outcome.component";
 
+import { AngularFireStorage } from '@angular/fire/compat/storage';
+
 @Component({
   selector: 'app-testing',
   templateUrl: './testing.component.html',
@@ -19,7 +21,7 @@ export class TestingComponent implements OnInit {
   private statusOutcomesView = 1;
   total:number = 0;
 
-  constructor(public dialog: MatDialog, store: AngularFirestore) {
+  constructor(public dialog: MatDialog, store: AngularFirestore, private storage: AngularFireStorage) {
     this.store = store;
     this.activeOutcomes = this.store.collection('outcomes', ref=>ref.where('status', '==', 1)).valueChanges({
       idField: 'id',
@@ -29,8 +31,11 @@ export class TestingComponent implements OnInit {
     });
     this.outcomes = this.activeOutcomes;
     this.setTotal();
+    
   }
   ngOnInit() {}
+
+  
 
   setTotal(){
       this.outcomes.forEach((outcomes: any[]) => {
@@ -61,7 +66,7 @@ export class TestingComponent implements OnInit {
     dialogRef.afterClosed().subscribe(newOutcome => {
       newOutcome.date_log = new Date();
       newOutcome.date_update = new Date();
-      newOutcome.photo = 'default.jpg';
+      newOutcome.photo = newOutcome.photo;
       newOutcome.status = Number(1);
       this.store.collection('outcomes').add(newOutcome);
       this.setView()

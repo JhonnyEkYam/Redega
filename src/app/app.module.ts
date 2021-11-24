@@ -33,14 +33,14 @@ import { UsuarioOutcomesComponent } from './usuario/usuario-outcomes/usuario-out
 import { DateRangePickerComponent } from './shared/date-range-picker/date-range-picker.component';
 import { NavComponent } from './usuario/nav/nav.component';
 import { TestingComponent } from './general/testing/testing.component';
+import { NewOutcomeComponent } from './general/testing/new-outcome/new-outcome.component';
+import { EditOutcomeComponent } from './general/testing/edit-outcome/edit-outcome.component';
 //SERVICIOS FIREBASE
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAnalyticsModule } from '@angular/fire/compat/analytics';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { environment } from '../environments/environment';
-import { NewOutcomeComponent } from './general/testing/new-outcome/new-outcome.component';
-import { EditOutcomeComponent } from './general/testing/edit-outcome/edit-outcome.component';
-
+import {AngularFireStorageModule, BUCKET } from '@angular/fire/compat/storage';
 
 @NgModule({
   declarations: [
@@ -79,9 +79,10 @@ import { EditOutcomeComponent } from './general/testing/edit-outcome/edit-outcom
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAnalyticsModule,
     AngularFirestoreModule,
-    MatGridListModule
+    MatGridListModule,
+    AngularFireStorageModule,
   ],
-  providers: [],
+  providers: [{ provide: BUCKET, useValue: 'gs://redega-system.appspot.com' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
