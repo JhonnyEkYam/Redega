@@ -40,7 +40,14 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAnalyticsModule } from '@angular/fire/compat/analytics';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { environment } from '../environments/environment';
+<<<<<<< Updated upstream
 import {AngularFireStorageModule, BUCKET } from '@angular/fire/compat/storage';
+=======
+import { NewOutcomeComponent } from './general/testing/new-outcome/new-outcome.component';
+import { EditOutcomeComponent } from './general/testing/edit-outcome/edit-outcome.component';
+import { GameComponent } from './general/game/game.component';
+
+>>>>>>> Stashed changes
 
 @NgModule({
   declarations: [
@@ -60,7 +67,8 @@ import {AngularFireStorageModule, BUCKET } from '@angular/fire/compat/storage';
     NavComponent,
     TestingComponent,
     NewOutcomeComponent,
-    EditOutcomeComponent
+    EditOutcomeComponent,
+    GameComponent
   ],
   imports: [
     MaterialModule,
