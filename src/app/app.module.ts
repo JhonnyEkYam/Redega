@@ -41,6 +41,7 @@ import { AngularFireAnalyticsModule } from '@angular/fire/compat/analytics';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { environment } from '../environments/environment';
 import {AngularFireStorageModule, BUCKET } from '@angular/fire/compat/storage';
+import { RealtimetestComponent } from './general/testing/jey/realtimetest/realtimetest.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import {AngularFireStorageModule, BUCKET } from '@angular/fire/compat/storage';
     NavComponent,
     TestingComponent,
     NewOutcomeComponent,
-    EditOutcomeComponent
+    EditOutcomeComponent,
+    RealtimetestComponent
   ],
   imports: [
     MaterialModule,

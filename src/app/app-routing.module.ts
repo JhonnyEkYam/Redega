@@ -4,6 +4,7 @@ import { ContadorHomeComponent } from './contador/contador-home/contador-home.co
 import { ContadorProfileComponent } from './contador/contador-profile/contador-profile.component';
 import { EncargadoHomeComponent } from './encargado/encargado-home/encargado-home.component';
 import { EncargadoProfileComponent } from './encargado/encargado-profile/encargado-profile.component';
+import { RealtimetestComponent } from './general/testing/jey/realtimetest/realtimetest.component';
 import { TestingComponent } from './general/testing/testing.component';
 import { LoginComponent } from './login/login/login.component';
 import { RegisterComponent } from './login/register/register.component';
@@ -14,6 +15,7 @@ import { UsuarioProfileComponent } from './usuario/usuario-profile/usuario-profi
 const routes: Routes = [
   // Vistas generales
   {path: 'test-gastos', component: TestingComponent},
+  {path: 'realtimetest', component: RealtimetestComponent},
   // Vistas de Login y de registro
   {path: '', component: LoginComponent},
   {path: 'register', component: RegisterComponent},

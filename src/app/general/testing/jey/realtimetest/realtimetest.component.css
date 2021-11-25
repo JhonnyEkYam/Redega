@@ -1,0 +1,41 @@
+.main{
+    height: 700px;
+    background: linear-gradient(45deg, #1414, #626262);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container{
+    width: 500px;
+    height: 500px;
+    border: 2px #bbb solid;
+    box-shadow: 4px 5px 9px #999a;
+    border-radius: 30px;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    -ms-border-radius: 30px;
+    -o-border-radius: 30px;
+    position: relative;
+}
+
+.player{
+    width: 50px;
+    height: 50px;
+    color: white;
+    position: absolute; 
+    box-shadow: 0 0 8px #0008;
+
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+#p1{
+    top: 5%;
+    background: linear-gradient(0deg, #b4b, #4db);
+}
+.p2{
+    background: linear-gradient(0deg, #bb4, #e5d);
+}
