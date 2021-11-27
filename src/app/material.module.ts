@@ -4,7 +4,10 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatCardModule} from '@angular/material/card';
-import {MatTreeModule} from '@angular/material/tree';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatDividerModule} from '@angular/material/divider';
+
 
 const myModules = [
   MatToolbarModule,
@@ -12,7 +15,9 @@ const myModules = [
   MatIconModule,
   MatSidenavModule,
   MatCardModule,
-  MatTreeModule
+  MatProgressSpinnerModule,
+  MatProgressBarModule,
+  MatDividerModule
 ];
 
 @NgModule({

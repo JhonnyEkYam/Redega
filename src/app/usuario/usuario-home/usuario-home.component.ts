@@ -6,8 +6,7 @@ import firebase from 'firebase/compat/app';
 //
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
-import { Usuarios} from '@app/shared/utils/users.interface';
-import { StorageService } from '@app/services/storage.service';
+import {formatDate } from '@angular/common';
 
 
 @Component({
@@ -16,14 +15,42 @@ import { StorageService } from '@app/services/storage.service';
   styleUrls: ['./usuario-home.component.css']
 })
 export class UsuarioHomeComponent implements OnInit {
-  
+  user: string | undefined;
+  today= new Date();
+  jstoday = '';
+  datauser1: any;
+  hide = true;
   constructor(private router:Router,
     public userService: UserService,
     public auth: AngularFireAuth,
-    private storageService:StorageService) { }
+    public afs: AngularFirestore,
+    
+    ) 
+    { 
+      this.jstoday = formatDate(this.today, 'dd-MM-yyyy hh:mm:ss a', 'en-US', '-0500');  
+    }
+
 
   ngOnInit(): void {
-//    this.getuser();
+    //this.b();
+    // obtener usuario 
+    /*this.userService.getusers().subscribe(users=>{
+      
+    })*/
+    /*
+    this.coments = this.afs.collectionGroup('usuarios', ref => ref.where('user', '==', user?.uid))
+    .valueChanges({ idField: 'docId' });
+    */
+    const datauser = JSON.parse(localStorage.getItem('usuario') || '{}');
+    this.afs.collection('usuarios').doc(datauser.uid).valueChanges().subscribe(data => {
+      console.log(data);
+      localStorage.setItem('usuariobd', JSON.stringify(data));
+      
+    });
+    this.datauser1 = JSON.parse(localStorage.getItem('usuariobd') || '{}');
+
+   //this.a();
+   //this.c();
   }
 
   goToOutcomes(){
@@ -46,4 +73,5 @@ export class UsuarioHomeComponent implements OnInit {
     this.userService.userinfo();
   }*/
 
+  
 }

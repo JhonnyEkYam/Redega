@@ -13,6 +13,8 @@ export class RegisterComponent {
   datapassword1 = new FormControl('', [Validators.required, Validators.minLength(4)]);
   hide = true;
   hide1 = true;
+  hide_spin = true;
+  true = true;
   constructor(
     public userService: UserService) { }
     
@@ -32,10 +34,12 @@ export class RegisterComponent {
 
   registro(){
     if (this.checkpassword() == true) {
+      this.hide_spin = false;
       this.userService.register(this.dataemail.value, this.datapassword.value);
     } else {
       //Agregar cuadro para mostrar error
       alert('Error en los datos');
+      this.hide_spin = true;
     }
     
   }
