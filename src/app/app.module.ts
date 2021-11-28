@@ -42,6 +42,7 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { environment } from '../environments/environment';
 import {AngularFireStorageModule, BUCKET } from '@angular/fire/compat/storage';
 import { RealtimetestComponent } from './general/testing/jey/realtimetest/realtimetest.component';
+import { SidebarComponent } from './contador/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import { RealtimetestComponent } from './general/testing/jey/realtimetest/realti
     TestingComponent,
     NewOutcomeComponent,
     EditOutcomeComponent,
-    RealtimetestComponent
+    RealtimetestComponent,
+    SidebarComponent
   ],
   imports: [
     MaterialModule,

@@ -1,93 +1,22 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
 .center {
     text-align: center;
 }
 
-.menu-options-container {
+.main-container{
     position: absolute;
-    width: 200px;
-    height: 100%;
-    color: #ffff;
-    z-index: 2;
-    box-shadow: 5px 0px 20px rgb(0, 0, 0, .2);
-}
-
-.menu-options-container h1,
-.menu-options-container h2,
-.menu-options-container h3,
-.menu-options-container h4 {
-    margin: 0;
-}
-
-.menu-options-container>div,
-.menu-options-container>h3 {
-    padding: 1rem;
-}
-
-.company-name,
-.menu-title {
-    letter-spacing: .15rem;
-    font-size: 1.25rem;
-}
-
-.user-profile {
-    margin: 0 auto;
-    width: 95px;
-    height: 95px;
-    background-color: #EDEDED;
-    border-radius: 50%;
+    width: 100vw;
+    padding: 0;
     display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.user-profile>i {
-    font-size: 65px;
-    color: #444444;
-}
-
-.user-img {}
-
-.menu-title {
-    font-style: italic;
-}
-
-.menu-options {
-    list-style: none;
-    margin: 0;
-}
-
-.option {
-    padding: .8rem 1rem;
-    transition: all .3s;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-}
-
-.option>a {
-    color: #ffff;
-    text-decoration: none;
-}
-
-.option i {
-    padding: 0 .5rem;
-    font-size: 1.5rem;
-}
-
-.option:hover {
-    background-color: #444444;
-}
-
-.option:hover a {
-    color: #ededed;
 }
 
 .main-interface {
-    width: calc(100% - 200px);
+    flex: 1 1 auto;
     background-color: #ffff;
-    height: 100%;
-    position: absolute;
-    right: 0;
 }
 
 .bar-amount {
