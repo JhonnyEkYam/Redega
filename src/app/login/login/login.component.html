@@ -1,25 +1,39 @@
 <div class="login-form">
-    <mat-card>
-        <mat-card-content>
-            <h1>LOGIN</h1>
-            <div class="example-container">
-                <mat-form-field appearance="fill">
-                    <mat-label>Enter your email</mat-label>
-                    <input matInput placeholder="pat@example.com" [formControl]="dataemail" required>
-                    <mat-error *ngIf="dataemail.invalid">{{getErrorMessage()}}</mat-error>
-                </mat-form-field>
-            </div>
-            <div class="example-container">
-                <mat-form-field appearance="fill">
-                    <mat-label>Enter your password</mat-label>
-                    <input matInput [type]="hide ? 'password' : 'text'" [formControl]="datapassword" required>
-                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+    <div *ngIf="hide_spin; else elseBlock">
+        <mat-card>
+            <mat-card-content>
+                <h1>LOGIN</h1>
+                <div class="example-container">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Enter your email</mat-label>
+                        <input matInput placeholder="pat@example.com" [formControl]="dataemail" required>
+                        <mat-error *ngIf="dataemail.invalid">{{getErrorMessage()}}</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="example-container">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Enter your password</mat-label>
+                        <input matInput [type]="hide ? 'password' : 'text'" [formControl]="datapassword" required>
+                        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                 <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
               </button>
-                </mat-form-field>
-            </div>
-        </mat-card-content>
-        <p class="message">Not registered? <a routerLink="/register">Create an account</a></p>
-        <button mat-raised-button color=primary (click)="login()">Iniciar Sesión</button>
-    </mat-card>
+                    </mat-form-field>
+                </div>
+            </mat-card-content>
+            <p class="message">Not registered? <a routerLink="/register">Create an account</a></p>
+            <button mat-raised-button color=primary (click)="login()">Iniciar Sesión</button>
+        </mat-card>
+    </div>
+    <ng-template #elseBlock>
+        <mat-card class="example-card display-middle">
+            <mat-card-title>Logeando Usuario</mat-card-title>
+            <mat-card-content>
+                <p>Espere un momento</p>
+            </mat-card-content>
+            <mat-divider inset></mat-divider>
+            <mat-card-footer>
+                <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+            </mat-card-footer>
+        </mat-card>
+    </ng-template>
 </div>

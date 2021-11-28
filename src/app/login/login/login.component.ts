@@ -13,6 +13,7 @@ export class LoginComponent {
   dataemail = new FormControl('', [Validators.required, Validators.email]);
   datapassword = new FormControl('', [Validators.required, Validators.minLength(4)]);
   hide = true;
+  hide_spin = true;
 
   constructor(
     public userService: UserService
@@ -29,7 +30,12 @@ export class LoginComponent {
     this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
   }*/
   login(){
-    this.userService.login(this.dataemail.value, this.datapassword.value);
-  } 
+    this.hide_spin = false;
+    try {
+      this.userService.login(this.dataemail.value, this.datapassword.value);  
+    } catch (error) {
+      this.hide_spin = true;  
+    }     
+  }
   
 }

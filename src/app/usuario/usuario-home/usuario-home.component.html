@@ -1,13 +1,15 @@
 <app-nav></app-nav>
 <div *ngIf="auth.user | async as user; else showLogin">
 
-    <div class="main">
+    <div class="main" loading="lazy">
         <div class="username">
-            <h1>Hello {{ user.email }}!</h1>
+            <h1>Hello {{ datauser1.name }}!</h1>
             <div>
-                Ultima Conexión el: {{user.metadata.lastSignInTime}}
+                Ultima Conexión el: {{datauser1.date_update}}
             </div>
         </div>
+
+
         <!--
             <div class="add-task">
             <input id="fileUpload" type="file" accept=".png, .jpg, .jpeg" multiple (change)="cargarImagen($event)">

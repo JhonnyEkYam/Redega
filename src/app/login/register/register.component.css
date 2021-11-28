@@ -41,3 +41,16 @@ input.example-right-align::-webkit-inner-spin-button {
 input.example-right-align {
     -moz-appearance: textfield;
 }
+
+.display-middle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%)
+}
+
+.example-card {
+    max-width: 400px;
+    width: 80%;
+}

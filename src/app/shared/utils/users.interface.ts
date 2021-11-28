@@ -1,6 +1,9 @@
-export interface Usuarios { 
-    correo: string; 
-    nombre: string;
-    id: string;
-    rol: string;
+
+export interface UsuariosInterface { 
+    date_log: string;
+    date_update: string;
+    email: string;
+    name: string;
+    rol: number;
+    uid: string;
   }
