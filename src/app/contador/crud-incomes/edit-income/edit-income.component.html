@@ -3,7 +3,8 @@
   
     <mat-form-field>
       <mat-label>Monto ({{editedIncome.amount}})</mat-label>
-      <input matInput [(ngModel)]="editedIncome.amount" name="amount">
+      <input matInput [(ngModel)]="editedIncome.amount" name="amount" [formControl]="dataamount" required>
+      <mat-error *ngIf="dataamount.invalid">{{getErrorMessage()}}</mat-error>
     </mat-form-field>
   
     <mat-form-field>

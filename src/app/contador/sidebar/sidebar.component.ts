@@ -1,4 +1,3 @@
-import { Observable } from "rxjs";
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from "@angular/fire/compat/firestore";
 import { MatDialog } from '@angular/material/dialog';
@@ -29,11 +28,15 @@ export class SidebarComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(newOutcome => {
-      newOutcome.date_log = new Date();
-      newOutcome.date_update = new Date();
-      newOutcome.photo = newOutcome.photo;
-      newOutcome.status = Number(1);
-      this.store.collection('outcomes').add(newOutcome);
+      if(!isNaN(Number(newOutcome.amount)) && (Number(newOutcome.amount) > 0) && newOutcome.date_outcome.toString().length > 1){
+          newOutcome.date_log = new Date();
+          newOutcome.date_update = new Date();
+          newOutcome.photo = newOutcome.photo;
+          newOutcome.status = Number(1);
+          this.store.collection('outcomes').add(newOutcome);
+      }else{
+        console.log("Egreso no registrado debido a errores")
+      }
     });
   }
 
@@ -41,12 +44,15 @@ export class SidebarComponent implements OnInit {
     const dialogRef = this.dialog.open(CreateIncomeComponent, {
       width: '600px'
     });
-
     dialogRef.afterClosed().subscribe(newIncome => {
-      newIncome.date_log = new Date();
-      newIncome.date_update = new Date();
-      newIncome.amount = Number(newIncome.amount);
-      this.store.collection('incomes').add(newIncome);
+      if(!isNaN(Number(newIncome.amount)) && (Number(newIncome.amount) > 0) && newIncome.date_income.toString().length > 1){
+          newIncome.date_log = new Date();
+          newIncome.date_update = new Date();
+          newIncome.amount = Number(newIncome.amount);
+          this.store.collection('incomes').add(newIncome);
+      }else{
+        console.log("Ingreso no registrado debido a errores")
+      }
     });
   }
 

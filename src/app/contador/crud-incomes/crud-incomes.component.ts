@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 
 import { EditIncomeComponent } from './edit-income/edit-income.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-crud-incomes',
@@ -16,7 +17,7 @@ export class CrudIncomesComponent implements OnInit {
   private store: AngularFirestore;
   total:number = 0;
 
-  constructor(public dialog: MatDialog, store: AngularFirestore, private storage: AngularFireStorage) {
+  constructor(public dialog: MatDialog, store: AngularFirestore, private storage: AngularFireStorage, public router:Router) {
     this.store = store;
     this.incomes = this.store.collection('incomes').valueChanges({
       idField: 'id',
@@ -38,15 +39,24 @@ export class CrudIncomesComponent implements OnInit {
     const dialogRef = this.dialog.open(EditIncomeComponent, {
       width: '600px'
     });
-
+    let validLog = false;
     dialogRef.componentInstance.editedIncome = income;
+    dialogRef.beforeClosed().subscribe(editedIncome =>{
+      validLog = !isNaN(editedIncome.amount) && (editedIncome.amount > 0)
+    })
     dialogRef.afterClosed().subscribe(editedIncome => {
-      const updatedDoc = this.store.collection('incomes');
-      updatedDoc.doc(editedIncome.id).update({
-        amount: editedIncome.amount,
-        date_income: editedIncome.date_income,
-        date_update: new Date(),
-      });
+      if(validLog){
+        const updatedDoc = this.store.collection('incomes');
+        updatedDoc.doc(editedIncome.id).update({
+          amount: editedIncome.amount,
+          date_income: editedIncome.date_income,
+          date_update: new Date(),
+        });
+      }else{
+        this.incomes = this.store.collection('incomes').valueChanges({
+          idField: 'id',
+        });
+      }
       this.setTotal();
     });
   }

@@ -3,12 +3,13 @@
 
     <mat-form-field>
         <mat-label>Monto</mat-label>
-        <input matInput [(ngModel)]="newIncome.amount" name="amount">
+        <input matInput [(ngModel)]="newIncome.amount" name="amount" required [formControl] = "dataamount">
+        <mat-error *ngIf="dataamount.invalid">{{getErrorMessage()}}</mat-error>
     </mat-form-field>
 
     <mat-form-field>
         <mat-label>Fecha del ingreso</mat-label>
-        <input matInput [matDatepicker]="dp3" [(ngModel)]="newIncome.date_income" name="date_income" disabled>
+        <input matInput [matDatepicker]="dp3" [(ngModel)]="newIncome.date_income" name="date_income" disabled required >
         <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
         <mat-datepicker #dp3 disabled="false"></mat-datepicker>
     </mat-form-field>

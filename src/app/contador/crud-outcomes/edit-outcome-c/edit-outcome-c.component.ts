@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from "@angular/material/dialog";
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-edit-outcome-c',
@@ -8,6 +9,14 @@ import { MatDialogRef } from "@angular/material/dialog";
 })
 export class EditOutcomeCComponent implements OnInit {
   editedOutcome: any;
+  dataamount = new FormControl(1, [
+    Validators.min(1),
+    Validators.required,
+  ]);
+  dataconcept = new FormControl('', [
+    Validators.required,
+    Validators.minLength(1)
+  ])
   constructor(public dialogRef: MatDialogRef<EditOutcomeCComponent>) { }
 
   onNoClick(): void {
@@ -19,6 +28,16 @@ export class EditOutcomeCComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+  
+  getErrorMessage(){
+    if(
+      this.dataamount.hasError('required') ||
+      this.dataconcept.hasError('required')
+    ){
+      return 'You must enter a value';
+    }
+    return '';
   }
 
 }

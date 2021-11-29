@@ -30,11 +30,9 @@ export class CrudOutcomesComponent implements OnInit {
     });
     this.outcomes = this.activeOutcomes;
     this.setTotal();
-    
   }
-  ngOnInit() {}
 
-  
+  ngOnInit() {}
 
   setTotal(){
       this.outcomes.forEach((outcomes: any[]) => {
@@ -47,6 +45,7 @@ export class CrudOutcomesComponent implements OnInit {
         }
       })
   }
+
   setView() {
     this.activeOutcomes = this.store.collection('outcomes', ref=>ref.where('status', '==', 1)).valueChanges({
       idField: 'id',
@@ -76,16 +75,34 @@ export class CrudOutcomesComponent implements OnInit {
     const dialogRef = this.dialog.open(EditOutcomeCComponent, {
       width: '600px'
     });
+    let validLog = false;
+    dialogRef.beforeClosed().subscribe(editedOutcome =>{
+      console.log("Before")
+      if(editedOutcome.amount.toString().length>0){
+        validLog = !isNaN(editedOutcome.amount) && (editedOutcome.amount > 0)
+      }
+      if(editedOutcome.concept.toString().length<4 && validLog){
+        validLog = false;
+      }
+      if(editedOutcome.date_outcome.toString().length<1 && validLog){
+        validLog = false;
+      }
+    })
+    
     dialogRef.componentInstance.editedOutcome = outcome;
     dialogRef.afterClosed().subscribe(editedOutcome => {
-      const updatedDoc = this.store.collection('outcomes');
-      updatedDoc.doc(editedOutcome.id).update({
-        amount: editedOutcome.amount,
-        concept: editedOutcome.concept,
-        date_outcome: editedOutcome.date_outcome,
-        date_update: new Date(),
-        photo: editedOutcome.photo
-      });
+      if(validLog){  
+        const updatedDoc = this.store.collection('outcomes');
+        updatedDoc.doc(editedOutcome.id).update({
+          amount: editedOutcome.amount,
+          concept: editedOutcome.concept,
+          date_outcome: editedOutcome.date_outcome,
+          date_update: new Date(),
+          photo: editedOutcome.photo
+        });
+      }else{
+        console.log("egreso no editado debido a inconsistencias")
+      }
       this.setView();
     });
   }

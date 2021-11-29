@@ -1,13 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatDialogRef } from "@angular/material/dialog";
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-edit-income',
   templateUrl: './edit-income.component.html',
   styleUrls: ['./edit-income.component.css']
 })
-export class EditIncomeComponent implements OnInit {
+export class EditIncomeComponent {
   editedIncome: any;
+  dataamount = new FormControl(1, [
+    Validators.min(1)
+  ]);
+  datadate = new FormControl('', [
+  ]);
   constructor(public dialogRef: MatDialogRef<EditIncomeComponent>) { }
 
   onNoClick(): void {
@@ -18,6 +24,12 @@ export class EditIncomeComponent implements OnInit {
     return new Date(date);
   }
 
-  ngOnInit(): void {
+    
+  getErrorMessage() {
+    if (this.dataamount.hasError('required')) {
+      return 'You must enter a value';
+    }
+
+    return this.dataamount.hasError('email') ? 'Not a valid email' : '';
   }
 }
