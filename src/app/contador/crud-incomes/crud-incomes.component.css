@@ -1,0 +1,49 @@
+.btn-container{
+    padding-left: 2em;
+    display: flex;
+    gap: 1em;
+    margin-bottom: 1em;
+}
+
+.incomes-list{
+    display: flex;
+    flex-direction: column;
+    gap: .2em;
+    height: 20em;
+    overflow-y: scroll;
+    width: 700px;
+    margin: 0 auto;
+}
+.income {
+    padding: .5em;
+    cursor: default;
+    display: flex;
+    gap: 1em;
+    align-items: center;
+    transition: .2s ease-in-out;
+    -webkit-transition: .2s ease-in-out;
+    -moz-transition: .2s ease-in-out;
+    -ms-transition: .2s ease-in-out;
+    -o-transition: .2s ease-in-out;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+
+.income:hover {
+    background-color: #ccc;
+}
+
+.income .details {
+    display: flex;
+    flex-direction: column;
+    gap: .2em;
+    flex: 1 1 auto;
+}
+
+.income .income-amount {
+    flex: 0 0 auto;
+}

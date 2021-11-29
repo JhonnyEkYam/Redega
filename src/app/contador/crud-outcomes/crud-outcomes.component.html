@@ -1,0 +1,35 @@
+<div class="btn-container">
+    <!-- <button mat-button color="primary" (click)="showCreateDialog()">
+        <mat-icon>create</mat-icon>Nuevo gasto
+    </button> -->
+    <button mat-button color="primary" (click)="shiftOutcomesView()">
+        <i class="fas fa-search"></i> Ver otros gastos
+    </button>
+    <h4> Total: {{total}}</h4>
+</div>
+<div class="outcomes-list">
+    <div class="outcome {{'status-'+outcome.status}}" *ngFor="let outcome of outcomes | async">
+        <div class="icon">&%</div>
+        <div class="details">
+            <span class="description">{{outcome.concept}}</span>
+            <span class="date">{{printDate(outcome.date_outcome)}}</span>
+        </div>
+
+        <div class="outcome-amount">
+            ${{outcome.amount}}
+        </div>
+
+        <a mat-raised-button href="{{outcome.photo}}" target="_blank">Factura</a>
+
+        <button mat-button color="primary" (click)="deleteLog(outcome.id, outcome.status)">
+            <span>
+                <mat-icon>delete</mat-icon>
+            </span>
+        </button>
+        <button mat-button color="primary" (click)="showEditDialog(outcome)">
+            <span>
+                <mat-icon>edit</mat-icon>
+            </span>
+        </button>
+    </div>
+</div>

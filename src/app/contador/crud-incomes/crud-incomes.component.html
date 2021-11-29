@@ -1,0 +1,23 @@
+<div class="btn-container">
+    <h4> Total: {{total}}</h4>
+</div>
+<div class="incomes-list">
+    <div class="income" *ngFor="let income of incomes | async">
+        <div class="icon">&%</div>
+        <div class="details">
+            <span class="description">{{income.amount}}</span>
+            <span class="date">{{printDate(income.date_income)}}</span>
+        </div>
+
+        <button mat-button color="primary" (click)="deleteLog(income.id)">
+            <span>
+                <mat-icon>delete</mat-icon>
+            </span>
+        </button>
+        <button mat-button color="primary" (click)="showEditDialog(income)">
+            <span>
+                <mat-icon>edit</mat-icon>
+            </span>
+        </button>
+    </div>
+</div>
