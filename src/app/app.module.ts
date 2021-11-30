@@ -52,6 +52,7 @@ import { ContadorIncomesComponent } from './contador/contador-incomes/contador-i
 import { BudgetViewerComponent } from './contador/budget-viewer/budget-viewer.component';
 import { CrudIncomesComponent } from './contador/crud-incomes/crud-incomes.component';
 import { EditIncomeComponent } from './contador/crud-incomes/edit-income/edit-income.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -103,7 +104,7 @@ import { EditIncomeComponent } from './contador/crud-incomes/edit-income/edit-in
     MatGridListModule,
     AngularFireStorageModule,
   ],
-  providers: [{ provide: BUCKET, useValue: 'gs://redega-system.appspot.com' }],
+  providers: [{ provide: BUCKET, useValue: 'gs://redega-system.appspot.com' },MatSnackBarModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

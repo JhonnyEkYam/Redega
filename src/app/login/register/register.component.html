@@ -5,6 +5,13 @@
                 <h1>REGISTRO</h1>
                 <div class="example-container">
                     <mat-form-field appearance="fill">
+                        <mat-label>Enter your Name</mat-label>
+                        <input matInput placeholder="User Name" [formControl]="dataname" required>
+                        <mat-error *ngIf="dataname.invalid">{{getErrorMessagename()}}</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="example-container">
+                    <mat-form-field appearance="fill">
                         <mat-label>Enter your email</mat-label>
                         <input matInput placeholder="pat@example.com" [formControl]="dataemail" required>
                         <mat-error *ngIf="dataemail.invalid">{{getErrorMessage()}}</mat-error>
