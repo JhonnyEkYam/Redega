@@ -5,6 +5,10 @@ import { AngularFireStorage } from '@angular/fire/compat/storage';
 //
 import { EditOutcomeCComponent } from './edit-outcome-c/edit-outcome-c.component';
 //
+import { query, orderBy, limit, where } from "firebase/firestore";
+import { getFirestore } from "firebase/firestore";
+import { collection, addDoc, getDocs } from "firebase/firestore";
+import { doc, setDoc } from "firebase/firestore";
 import { Observable } from 'rxjs';
 
 
@@ -14,43 +18,80 @@ import { Observable } from 'rxjs';
   styleUrls: ['./crud-outcomes.component.css']
 })
 export class CrudOutcomesComponent implements OnInit {
-  outcomes: Observable<any[]>;
+  outcomes: any;
+  viewOutcomes!: Observable<any[]>;
   private store: AngularFirestore;
   statusOutcomesView = 1;
   total: number = 0;
-  today = new Date();
-  month = new Date().getMonth();
 
   constructor(public dialog: MatDialog, store: AngularFirestore, private storage: AngularFireStorage) {
-    
-    // Obtener ID AÑOFECHA 
-    let monthYear = Number(
-      this.today.getFullYear() + '' + (Number(this.today.getMonth())+1)
-    );
-      // Conexion a Firestore
-    this.store = store
-    // Tipo de egresos a buscar, ACTIVOS
     this.statusOutcomesView = 1;
-    // Peticion de los gastos del mes ACTUAL
-    this.outcomes = this.store.collection('outcomes', ref => ref.where('status', '==', this.statusOutcomesView).where('monthYear', '==', monthYear).orderBy('date_outcome', 'desc')).valueChanges({
-      idField: 'id',
-    });
-    // Sumar los gastos del mes
-    this.setTotal();
+    const db = getFirestore();
+    const outcomesRef = collection(db, 'outcomes');
+    const q = query(outcomesRef, orderBy('date_outcome', 'desc'), limit(30), where('status', '==', this.statusOutcomesView));
+    
+    (async () => {
+      try {
+        this.outcomes = (await getDocs(q));
+        debugger
+        this.viewOutcomes = this.outcomes
+        this.outcomes.forEach((outcome: any) => {
+          console.log(outcome.data())
+          // this.viewOutcomes.push(outcome.data())
+          // debugger
+        });
+      } catch (e) {
+        debugger
+        console.log("Error adding document: ", e);
+      }
+      debugger
+      this.setTotal();
+    })()
+    this.store = store;
+    debugger
   }
 
   ngOnInit() { }
 
   setTotal() {
-    this.outcomes.forEach((outcomes: any[]) => {
-      if (outcomes[0].status == this.statusOutcomesView) {
-        this.total = 0;
-        outcomes.forEach(outcome => {
-          this.total += Number(outcome.amount);
-        })
+    debugger
+    this.total = 0;
+    this.outcomes.forEach((outcome: any) => {
+      debugger
+      if (outcome.data().status == this.statusOutcomesView) {
+        debugger
+        this.total += Number(outcome.data().amount);
+        // outcomes.forEach(outcome => {
+        //   debugger
+        //   this.total += Number(outcome.data().amount);
+        // })
         return;
       }
     })
+  }
+
+  setView() {
+    // this.viewOutcomes = [];
+    const db = getFirestore();
+    const outcomesRef = collection(db, 'outcomes');
+    const q = query(outcomesRef, orderBy('date_outcome', 'desc'), limit(30), where('status', '==', this.statusOutcomesView));
+    (async () => {
+      try {
+        this.outcomes = (await getDocs(q)).docChanges();
+        debugger
+        this.viewOutcomes = this.outcomes
+        // this.outcomes.forEach((outcome: any) => {
+        //   this.viewOutcomes.push(outcome.data())
+        //   // debugger
+        // });
+      } catch (e) {
+        debugger
+        console.log("Error adding document: ", e);
+      }
+      debugger
+      this.setTotal();
+    })()
+    this.setTotal();
   }
 
   showEditDialog(outcome: any): void {
@@ -96,7 +137,7 @@ export class CrudOutcomesComponent implements OnInit {
       } else {
         console.log("egreso no editado debido a inconsistencias")
       }
-      this.setTotal();
+      this.setView();
     });
   }
 
@@ -110,65 +151,11 @@ export class CrudOutcomesComponent implements OnInit {
 
   shiftOutcomesView() {
     this.statusOutcomesView = this.statusOutcomesView > 0 ? 0 : 1;
-    this.outcomes = this.store.collection('outcomes', ref => ref.where('status', '==', this.statusOutcomesView).where('monthYear', '==', 202111).orderBy('date_outcome', 'desc')).valueChanges({
-      idField: 'id',
-    });
-    this.setTotal();
+    this.setView();
   }
 
   public printDate(dateOrTimestamps: any): any {
     if (dateOrTimestamps.seconds) return new Date(dateOrTimestamps.seconds * 1000).toDateString();
     return dateOrTimestamps.toDateString();
   }
-
-  public getMonthInSpanish(){
-    let month;
-    switch (this.month) {
-      case 0:
-        month = 'Enero';
-        break;
-      case 1:
-        month = 'Febrero';
-        break;
-      case 2:
-        month = 'Marzo';
-        break;
-      case 3:
-        month = 'Abril';
-        break;
-      case 4:
-        month = 'Mayo';
-        break;
-      case 5:
-        month = 'Junio';
-        break;
-      case 6:
-        month = 'Julio';
-        break;
-      case 7:
-        month = 'Agosto';
-        break;
-      case 8:
-        month = 'Septiembre';
-        break;
-      case 9:
-        month = 'Octubre';
-        break;
-      case 10:
-        month = 'Noviembre';
-        break;
-      case 11:
-        month = 'Diciembre';
-        break;
-      default:
-        month = 'Esperando...';
-        break;
-    }
-    return month;
-  }
-
-  public getCurrentYear(){
-    return this.today.getFullYear();
-  }
-  
 }

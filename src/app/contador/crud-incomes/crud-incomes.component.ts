@@ -48,7 +48,7 @@ export class CrudIncomesComponent implements OnInit {
       if(validLog){
         const updatedDoc = this.store.collection('incomes');
         updatedDoc.doc(editedIncome.id).update({
-          amount: editedIncome.amount,
+          amount: Number(editedIncome.amount),
           date_income: editedIncome.date_income,
           date_update: new Date(),
         });
@@ -66,7 +66,6 @@ export class CrudIncomesComponent implements OnInit {
     updatedDoc.doc(idIncome).delete().then(()=>{
       console.log("Exito");
       this.setTotal();
-
     })
     .catch(err=>{
       console.log("Error: ", err);

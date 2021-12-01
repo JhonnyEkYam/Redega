@@ -1,9 +1,77 @@
+.main{
+    display: flex;
+    padding: 1em;
+}
+
+.container{
+    display: flex;
+    gap: 1em;
+}
+
+.dates .year{
+    cursor: default;
+    width: 170px;
+    font-weight: 700;
+    background: #141414;
+    color: #fff;
+    padding: .3em 0;
+    display: flex;
+    gap: 1em;
+    justify-content: center;
+    margin-bottom: .3em;
+    clip-path: polygon(10px 0%, 100% 0%, 100% 100%, 0% 100%);
+} .dates .year .yearly-total{
+    font-size: .9rem;
+    font-weight: 600;
+    font-style: italic;
+}
+.dates li{
+    cursor: default;
+    list-style: none;
+    padding: .3em .7em;
+    background: #ededed;
+    display: flex;
+    transition: .2s ease-in-out;
+    -webkit-transition: .2s ease-in-out;
+    -moz-transition: .2s ease-in-out;
+    -ms-transition: .2s ease-in-out;
+    -o-transition: .2s ease-in-out;
+}.dates li:hover { background: #ababab; }
+.dates > *:nth-child(2){
+    border-radius: 5px 5px 0 0;
+    -webkit-border-radius: 5px 5px 0 0;
+    -moz-border-radius: 5px 5px 0 0;
+    -ms-border-radius: 5px 5px 0 0;
+    -o-border-radius: 5px 5px 0 0;
+}
+.dates > *:last-child{
+    border-radius: 0 0 5px 5px;
+    -webkit-border-radius: 0 0 5px 5px;
+    -moz-border-radius: 0 0 5px 5px;
+    -ms-border-radius: 0 0 5px 5px;
+    -o-border-radius: 0 0 5px 5px;
+}
+.dates li .month{
+    flex: 1 1 auto;
+}
+
+/** Contenedor  **/
+.outcomes-container{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+/** Barra informativa de la lista de gastos///*/
+
 .btn-container{
     padding-left: 2em;
     display: flex;
     gap: 1em;
     margin-bottom: 1em;
 }
+
+/* *** Estilos de los gastos ***/
 
 .outcomes-list{
     display: flex;

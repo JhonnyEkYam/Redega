@@ -19,6 +19,10 @@
         <mat-datepicker-toggle matSuffix [for]="dp4"></mat-datepicker-toggle>
         <mat-datepicker #dp4 disabled="false" [startAt]="newDate(editedOutcome.date_outcome.seconds*1000)"></mat-datepicker>
     </mat-form-field>
+
+      <input type="file" accept="image/jpeg, image/png" (change)="uploadFile($event)">
+      <div *ngIf="condition; else elseBlock">Subida Exitosa.</div>
+      <ng-template #elseBlock>Suba una imagen</ng-template>
   
     <div mat-dialog-actions>
       <button mat-button (click)="onNoClick()">Cancel</button>

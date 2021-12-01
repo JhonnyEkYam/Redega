@@ -28,11 +28,22 @@ export class SidebarComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(newOutcome => {
-      if(!isNaN(Number(newOutcome.amount)) && (Number(newOutcome.amount) > 0) && newOutcome.date_outcome.toString().length > 1){
+      if(!isNaN(Number(newOutcome.amount)) 
+      && (Number(newOutcome.amount) > 0) 
+      && newOutcome.date_outcome.toString().length > 1
+      && newOutcome.photo.toString().length > 7){
+        
+        let monthYearValue = Number(
+          newOutcome.date_outcome.getFullYear()   
+           + '' + ((Number(newOutcome.date_outcome.getMoth()) + 1) < 10 ? '0' : '') + '' +     
+           (Number(newOutcome.date_outcome.getMonth())+1)
+        );
+
           newOutcome.date_log = new Date();
           newOutcome.date_update = new Date();
-          newOutcome.photo = newOutcome.photo;
           newOutcome.status = Number(1);
+          newOutcome.monthYear = Number(monthYearValue);
+          newOutcome.amount = Number(newOutcome.amount);
           this.store.collection('outcomes').add(newOutcome);
       }else{
         console.log("Egreso no registrado debido a errores")
@@ -55,6 +66,7 @@ export class SidebarComponent implements OnInit {
       }
     });
   }
+
 
   // Rutas
   goToHome(){

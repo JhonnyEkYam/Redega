@@ -18,9 +18,9 @@
         <mat-datepicker #dp3 disabled="false"></mat-datepicker>
     </mat-form-field>
 
-    <input type="file" accept="image/gif, image/jpeg, image/png" (change)="uploadFile($event)">
-    <div *ngIf="condition; else elseBlock">Subida Exitosa.</div>
-    <ng-template #elseBlock>Sin carga.</ng-template>
+        <input type="file" accept="image/jpeg, image/png" (change)="uploadFile($event)">
+        <div *ngIf="condition; else elseBlock">Subida Exitosa.</div>
+        <ng-template #elseBlock>Suba una imagen</ng-template>
 
     <div mat-dialog-actions>
         <button mat-button (click)="onNoClick()">Cancel</button>
