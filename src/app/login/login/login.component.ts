@@ -25,17 +25,13 @@ export class LoginComponent {
     }
 
     return this.dataemail.hasError('email') ? 'Not a valid email' : '';
-  }/*
-  loginwithGoogle() {
-    this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
-  }*/
+  }
   login(){
     this.hide_spin = false;
     try {
       this.userService.login(this.dataemail.value, this.datapassword.value);  
     } catch (error) {
-      this.hide_spin = true;  
-    }     
+        this.hide_spin = true;      
+    }
   }
-  
 }
