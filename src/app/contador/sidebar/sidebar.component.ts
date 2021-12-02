@@ -35,7 +35,9 @@ export class SidebarComponent implements OnInit {
         
         let monthYearValue = Number(
           newOutcome.date_outcome.getFullYear()   
-           + '' + ((Number(newOutcome.date_outcome.getMoth()) + 1) < 10 ? '0' : '') + '' +     
+           + '' + 
+           ((Number(newOutcome.date_outcome.getMonth()) + 1) < 10 ? '0' : '')
+           + '' +     
            (Number(newOutcome.date_outcome.getMonth())+1)
         );
 

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from "@angular/fire/compat/firestore";
 import { MatDialog } from '@angular/material/dialog';
-import { AngularFireStorage } from '@angular/fire/compat/storage';
 //
 import { EditOutcomeCComponent } from './edit-outcome-c/edit-outcome-c.component';
 //
@@ -14,20 +13,29 @@ import { Observable } from 'rxjs';
   styleUrls: ['./crud-outcomes.component.css']
 })
 export class CrudOutcomesComponent implements OnInit {
-  outcomes: Observable<any[]>;
+  // Conexion a Firebase
   private store: AngularFirestore;
-  statusOutcomesView = 1;
-  total: number = 0;
-  today = new Date();
-  month = new Date().getMonth();
+  // Observables Outcomes
+  outcomes: Observable<any[]>;
+  outcomesThisYear: Observable<any[]>;
+  // Otras
+  totalYearlyActiveOutcomes = 0;
+  statusOutcomesView = 1;// Tipo de egresos
+  total: number = 0; // Monto mensual del mes seleccionado
+  today = new Date(); // Fecha actual
+  month = new Date().getMonth(); // Mes actual
+  selectedMonth = this.month;
+  monthsData;
 
-  constructor(public dialog: MatDialog, store: AngularFirestore, private storage: AngularFireStorage) {
-    
+  constructor(public dialog: MatDialog, store: AngularFirestore) {
+
     // Obtener ID AÑOFECHA 
     let monthYear = Number(
-      this.today.getFullYear() + '' + (Number(this.today.getMonth())+1)
+      this.today.getFullYear()   
+       + '' + ((Number(this.today.getMonth()) + 1) < 10 ? '0' : '') + '' +     
+       (Number(this.today.getMonth())+1)
     );
-      // Conexion a Firestore
+    // Conexion a Firestore
     this.store = store
     // Tipo de egresos a buscar, ACTIVOS
     this.statusOutcomesView = 1;
@@ -37,18 +45,36 @@ export class CrudOutcomesComponent implements OnInit {
     });
     // Sumar los gastos del mes
     this.setTotal();
+
+    // Obtener todos los gastos del año actual
+    let outcomesThisYear = this.store.collection('outcomes', ref => ref
+      .where('status', '==', 1)
+      .where('monthYear', '>=', Number(this.getCurrentYear() + '00'))
+      .where('monthYear', '<', Number((Number(this.getCurrentYear()) + 1) + '00'))
+    ).valueChanges();
+    // debugger
+    this.outcomesThisYear = outcomesThisYear
+    // debugger
+    this.monthsData = this.getMonths()
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.getTotalYearlyActiveOutcomes()
+  }
 
   setTotal() {
     this.outcomes.forEach((outcomes: any[]) => {
-      if (outcomes[0].status == this.statusOutcomesView) {
+      try {
+        if (outcomes[0].status == this.statusOutcomesView) {
+          this.total = 0;
+          outcomes.forEach(outcome => {
+            this.total += Number(outcome.amount);
+          })
+          return;
+        }
+      } catch (err) {
         this.total = 0;
-        outcomes.forEach(outcome => {
-          this.total += Number(outcome.amount);
-        })
-        return;
+        // debugger
       }
     })
   }
@@ -109,8 +135,16 @@ export class CrudOutcomesComponent implements OnInit {
   }
 
   shiftOutcomesView() {
+    let monthYear = Number(
+      this.today.getFullYear()   
+       + '' + ((Number(this.selectedMonth) + 1) < 10 ? '0' : '') + '' +     
+       (Number(this.selectedMonth)+1)
+    );
     this.statusOutcomesView = this.statusOutcomesView > 0 ? 0 : 1;
-    this.outcomes = this.store.collection('outcomes', ref => ref.where('status', '==', this.statusOutcomesView).where('monthYear', '==', 202111).orderBy('date_outcome', 'desc')).valueChanges({
+    this.outcomes = this.store.collection('outcomes', ref => ref
+      .where('status', '==', this.statusOutcomesView)
+      .where('monthYear', '==', monthYear)
+      .orderBy('date_outcome', 'desc')).valueChanges({
       idField: 'id',
     });
     this.setTotal();
@@ -121,7 +155,7 @@ export class CrudOutcomesComponent implements OnInit {
     return dateOrTimestamps.toDateString();
   }
 
-  public getMonthInSpanish(){
+  public getCurrentMonthInSpanish() {
     let month;
     switch (this.month) {
       case 0:
@@ -167,8 +201,105 @@ export class CrudOutcomesComponent implements OnInit {
     return month;
   }
 
-  public getCurrentYear(){
+  public getCurrentYear() {
     return this.today.getFullYear();
   }
-  
+
+  public getMonths() {
+    let months = [];
+    for (let i = 0; i <= this.month; i++) {
+      months.push(this.getMonth(i))
+    }
+    // debugger
+    return months;
+  }
+  public getMonth(monthIndex: number) {
+    let month;
+
+    // Obtener month
+    switch (monthIndex) {
+      case 0:
+        month = 'Enero';
+        break;
+      case 1:
+        month = 'Febrero';
+        break;
+      case 2:
+        month = 'Marzo';
+        break;
+      case 3:
+        month = 'Abril';
+        break;
+      case 4:
+        month = 'Mayo';
+        break;
+      case 5:
+        month = 'Junio';
+        break;
+      case 6:
+        month = 'Julio';
+        break;
+      case 7:
+        month = 'Agosto';
+        break;
+      case 8:
+        month = 'Septiembre';
+        break;
+      case 9:
+        month = 'Octubre';
+        break;
+      case 10:
+        month = 'Noviembre';
+        break;
+      case 11:
+        month = 'Diciembre';
+        break;
+      default:
+        month = 'Invalido';
+        break;
+    }
+
+    return month;
+  }
+
+  private getTotalYearlyActiveOutcomes() {
+    this.outcomesThisYear.forEach((outcomes: any[]) => {
+      try {
+        if (outcomes[0].status == 1) {
+          // debugger
+          this.totalYearlyActiveOutcomes = 0;
+          outcomes.forEach(outcome => {
+            this.totalYearlyActiveOutcomes += Number(outcome.amount);
+          })
+          // debugger
+          return;
+        }
+      } catch (err) {
+        this.totalYearlyActiveOutcomes = 0;
+        debugger
+      }
+      return;
+    })
+  }
+  public setView(indexMonth: any) {
+    this.selectedMonth = indexMonth;
+    let idMonth = Number(
+      this.getCurrentYear()
+      + '' + ((Number(indexMonth) + 1) < 10 ? '0' : '') + '' +
+      (Number(indexMonth) + 1)
+    );
+    // this.statusOutcomesView = this.statusOutcomesView > 0 ? 0 : 1;
+    this.outcomes = this.store.collection('outcomes', ref => ref
+      .where('status', '==', this.statusOutcomesView)
+      .where('monthYear', '==', idMonth)
+      .orderBy('date_outcome', 'desc'))
+      .valueChanges({
+        idField: 'id',
+      });
+    this.setTotal();
+  }
+
+  public isFilled(){
+    return this.total > 0;
+  }
 }
