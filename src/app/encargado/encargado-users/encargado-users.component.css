@@ -1,0 +1,35 @@
+.container-info {
+    max-width: 900px;
+    margin: 50px auto;
+    background-color: #EDEDED;
+}
+
+table {
+    width: 100%;
+}
+
+.options-users {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.options-users>button {
+    color: #ffffff;
+}
+
+.edit-user {
+    background-color: #185ADB;
+}
+
+.rol-user {
+    background-color: #444444;
+}
+
+.delete-user {
+    background-color: #DA0037;
+}
+
+.options-colum {
+    text-align: center;
+}

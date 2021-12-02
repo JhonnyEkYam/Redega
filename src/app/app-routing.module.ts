@@ -4,6 +4,7 @@ import { ContadorHomeComponent } from './contador/contador-home/contador-home.co
 import { ContadorProfileComponent } from './contador/contador-profile/contador-profile.component';
 import { EncargadoHomeComponent } from './encargado/encargado-home/encargado-home.component';
 import { EncargadoProfileComponent } from './encargado/encargado-profile/encargado-profile.component';
+import { EncargadoUsersComponent } from './encargado/encargado-users/encargado-users.component';
 import { RealtimetestComponent } from './general/testing/jey/realtimetest/realtimetest.component';
 import { TestingComponent } from './general/testing/testing.component';
 import { LoginComponent } from './login/login/login.component';
@@ -31,6 +32,7 @@ const routes: Routes = [
   // Vistas de ENCARGADO
   {path: 'encargado/home', component: EncargadoHomeComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin } },
   {path: 'encargado/profile', component: EncargadoProfileComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin } },
+  {path: 'encargado/users', component: EncargadoUsersComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin } },
   // Vistas de Usuario
   {path: 'usuario/home', component: UsuarioHomeComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin } },
   {path: 'usuario/profile', component: UsuarioProfileComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin } },

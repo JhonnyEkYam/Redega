@@ -15,6 +15,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';// /datetime;
 // tablas
 import {MatGridListModule} from '@angular/material/grid-list';
+import { MatTableModule } from '@angular/material/table';  
 /** GENERALES */
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -43,6 +44,10 @@ import { environment } from '../environments/environment';
 import {AngularFireStorageModule, BUCKET } from '@angular/fire/compat/storage';
 import { RealtimetestComponent } from './general/testing/jey/realtimetest/realtimetest.component';
 import { SidebarComponent } from './contador/sidebar/sidebar.component';
+import { EncargadoUsersComponent } from './encargado/encargado-users/encargado-users.component';
+import { EditUserComponent } from './encargado/edit-user/edit-user.component';
+import { DeleteUserComponent } from './encargado/delete-user/delete-user.component';
+import { RolUserComponent } from './encargado/rol-user/rol-user.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +69,11 @@ import { SidebarComponent } from './contador/sidebar/sidebar.component';
     NewOutcomeComponent,
     EditOutcomeComponent,
     RealtimetestComponent,
-    SidebarComponent
+    SidebarComponent,
+    EncargadoUsersComponent,
+    EditUserComponent,
+    DeleteUserComponent,
+    RolUserComponent
   ],
   imports: [
     MaterialModule,
@@ -75,6 +84,7 @@ import { SidebarComponent } from './contador/sidebar/sidebar.component';
     MatInputModule,
     MatButtonModule,
     MatIconModule,
+    MatTableModule,
     MatDialogModule,
     FormsModule,
     ReactiveFormsModule,
