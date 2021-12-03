@@ -2,53 +2,14 @@
     <div class="container">
 
         <!-- fechas -->
-        <ul class="dates">
-            <span class="year">2021 <span class="yearly-total">$17,532</span></span>
-            <li>
-                <span class="month">Enero</span>
-                <span class="total">$5340</span>
-            </li>
-            <li>
-                <span class="month">Febrero</span>
-                <span class="total">$520</span>
-            </li>
-            <li>
-                <span class="month">Marzo</span>
-                <span class="total">$451</span>
-            </li>
-            <li>
-                <span class="month">Abril</span>
-                <span class="total">$400</span>
-            </li>
-            <li>
-                <span class="month">Mayo</span>
-                <span class="total">$2300</span>
-            </li>
-            <li>
-                <span class="month">Junio</span>
-                <span class="total">$1015</span>
-            </li>
-            <li>
-                <span class="month">Julio</span>
-                <span class="total">$5340</span>
-            </li>
-            <li>
-                <span class="month">Agosto</span>
-                <span class="total">$452</span>
-            </li>
-            <li>
-                <span class="month">Septiembre</span>
-                <span class="total">$120</span>
-            </li>
-            <li>
-                <span class="month">Octubre</span>
-                <span class="total">$3200</span>
-            </li>
-            <li>
-                <span class="month">Noviembre</span>
-                <span class="total">$50</span>
-            </li>
-        </ul>
+        <div class="date-container">
+            <span class="year">{{getCurrentYear()}} <span class="yearly-total"> ${{totalYearlyActiveOutcomes}}</span></span>
+            <ul class="dates">
+                <li *ngFor="let month of monthsData; let indexMonth=index;">
+                    <span class="month" (click)="setView(indexMonth)">{{month}}</span>
+                </li>
+            </ul>
+        </div>
         <!-- Fin de lista de fechas -->
 
         <!-- Contenedor de la lista de gastos -->
@@ -59,14 +20,13 @@
                     <i class="fas fa-search"></i> Ver otros gastos
                 </button>
                 <span class="title">
-                    Monto total de las transacciones de 
-                    <span class="date"> {{getMonthInSpanish()}}, {{getCurrentYear()}} </span>
-                    <span class="amount"> - ${{total}}</span>
+                    <span class="date"> {{getMonth(selectedMonth)}}, {{getCurrentYear()}} </span>
+                    <span class="amount"> ${{total}}</span>
                 </span>
             </div>
 
             <!-- GASTOS -->
-            <div class="outcomes-list">
+            <div *ngIf="isFilled(); else emptyMonth" class="outcomes-list">
                 <div class="outcome {{'status-'+ statusOutcomesView}}" *ngFor="let outcome of outcomes | async">
                     <div class="icon">&%</div>
                     <div class="details">
@@ -92,6 +52,14 @@
                     </button>
                 </div>
             </div>
+            
+            <ng-template #emptyMonth>
+                <div class="outcomes-list">
+                    <div class="no-outcome">
+                        No hay gastos registrados en {{getMonth(selectedMonth)}}
+                    </div>
+                </div>
+            </ng-template>
         </div> <!-- Fin de contenedor de lista de gastos -->
     </div> <!-- Fin de container -->
 </div><!-- fin de main -->

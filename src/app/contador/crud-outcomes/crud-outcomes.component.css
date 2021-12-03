@@ -7,8 +7,24 @@
     display: flex;
     gap: 1em;
 }
+.date-container .dates{
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    transition: .3s ease-in-out;
+    -webkit-transition: .3s ease-in-out;
+    -moz-transition: .3s ease-in-out;
+    -ms-transition: .3s ease-in-out;
+    -o-transition: .3s ease-in-out;
+}
+.date-container .dates:hover{
+    box-shadow: 0 0 10px #141414b0;
+    scale: 1.05;
+}
 
-.dates .year{
+.year{
     cursor: default;
     width: 170px;
     font-weight: 700;
@@ -20,24 +36,26 @@
     justify-content: center;
     margin-bottom: .3em;
     clip-path: polygon(10px 0%, 100% 0%, 100% 100%, 0% 100%);
-} .dates .year .yearly-total{
+} .year .yearly-total{
     font-size: .9rem;
     font-weight: 600;
     font-style: italic;
 }
 .dates li{
-    cursor: default;
+    cursor: pointer;
     list-style: none;
     padding: .3em .7em;
     background: #ededed;
     display: flex;
+    justify-content: center;
+    align-items: center;
     transition: .2s ease-in-out;
     -webkit-transition: .2s ease-in-out;
     -moz-transition: .2s ease-in-out;
     -ms-transition: .2s ease-in-out;
     -o-transition: .2s ease-in-out;
 }.dates li:hover { background: #ababab; }
-.dates > *:nth-child(2){
+.dates > *:first-child{
     border-radius: 5px 5px 0 0;
     -webkit-border-radius: 5px 5px 0 0;
     -moz-border-radius: 5px 5px 0 0;
@@ -53,6 +71,9 @@
 }
 .dates li .month{
     flex: 1 1 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /** Contenedor  **/
@@ -70,9 +91,26 @@
     gap: 1em;
     margin-bottom: 1em;
 }
+.btn-container .title{
+    display: flex;
+    flex-direction: column;
+}
+.btn-container .title .amount{
+    flex: 1 1 auto;
+    font-weight: 700;
+}
 
 /* *** Estilos de los gastos ***/
-
+.no-outcome{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 5px;
+    color: #333;
+}
 .outcomes-list{
     display: flex;
     flex-direction: column;
@@ -81,6 +119,14 @@
     overflow-y: scroll;
     width: 700px;
     margin: 0 auto;
+    border: 5px solid #bbb;
+    box-shadow: 2px 3px 7px #4449;
+    
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
 }
 .outcome {
     padding: .5em;
