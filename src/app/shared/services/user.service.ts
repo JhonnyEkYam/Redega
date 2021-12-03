@@ -62,8 +62,15 @@ import { MatSnackBar } from '@angular/material/snack-bar';
           });
           this.loginmsg();
         setTimeout(() => {
-          this.router.navigate(['usuario/home']);
-        }, 3000);
+          const datap = JSON.parse(localStorage.getItem('usuariobd') || '{}');
+          if(datap.rol == 1){
+            this.router.navigate(['usuario/home']);
+          } else if(datap.rol == 2){
+            this.router.navigate(['contador/home']);
+          } else if(datap.rol == 3){
+            this.router.navigate(['encargado/home']);
+          }
+        }, 4000);
         
 
         return user;
@@ -106,6 +113,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
         rol: 1,
         uid: datauser.uid
       });
+
       this.afs.collection('usuarios').doc(datauser.uid).valueChanges().subscribe(data => {
         localStorage.setItem('usuariobd', JSON.stringify(data));
         });
@@ -145,8 +153,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
       /*
       rol == 1 -> usuario
-      rol == 2 -> encargado
-      rol == 3 -> admin
+      rol == 2 -> contador
+      rol == 3 -> encargado = admin
       */
     }
 
