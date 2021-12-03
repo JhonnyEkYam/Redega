@@ -1,0 +1,29 @@
+<form>
+    <h1 mat-dialog-title>Nuevo gasto</h1>
+
+    <mat-form-field>
+        <mat-label>Monto</mat-label>
+        <input matInput [(ngModel)]="newOutcome.amount" name="amount">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Concepto</mat-label>
+        <input matInput [(ngModel)]="newOutcome.concept" name="concept">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Fecha del gasto</mat-label>
+        <input matInput [matDatepicker]="dp3" [(ngModel)]="newOutcome.date_outcome" name="date_outcome" disabled>
+        <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
+        <mat-datepicker #dp3 disabled="false"></mat-datepicker>
+    </mat-form-field>
+
+        <input type="file" accept="image/jpeg, image/png" (change)="uploadFile($event)">
+        <div *ngIf="condition; else elseBlock">Subida Exitosa.</div>
+        <ng-template #elseBlock>Suba una imagen</ng-template>
+
+    <div mat-dialog-actions>
+        <button mat-button (click)="onNoClick()">Cancel</button>
+        <button mat-button color="primary" [mat-dialog-close]="newOutcome" cdkFocusInitial>Save</button>
+    </div>
+</form>

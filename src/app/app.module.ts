@@ -43,11 +43,21 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { environment } from '../environments/environment';
 import {AngularFireStorageModule, BUCKET } from '@angular/fire/compat/storage';
 import { RealtimetestComponent } from './general/testing/jey/realtimetest/realtimetest.component';
+//Nuevos componentes
 import { SidebarComponent } from './contador/sidebar/sidebar.component';
 import { EncargadoUsersComponent } from './encargado/encargado-users/encargado-users.component';
 import { EditUserComponent } from './encargado/edit-user/edit-user.component';
 import { DeleteUserComponent } from './encargado/delete-user/delete-user.component';
 import { RolUserComponent } from './encargado/rol-user/rol-user.component';
+import { CrudOutcomesComponent } from './contador/crud-outcomes/crud-outcomes.component';
+import { CreateOutcomeComponent } from './contador/crud-outcomes/create-outcome/create-outcome.component';
+import { EditOutcomeCComponent } from './contador/crud-outcomes/edit-outcome-c/edit-outcome-c.component';
+import { CreateIncomeComponent } from './contador/crud-outcomes/create-income/create-income.component';
+import { ContadorIncomesComponent } from './contador/contador-incomes/contador-incomes.component';
+import { BudgetViewerComponent } from './contador/budget-viewer/budget-viewer.component';
+import { CrudIncomesComponent } from './contador/crud-incomes/crud-incomes.component';
+import { EditIncomeComponent } from './contador/crud-incomes/edit-income/edit-income.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -73,7 +83,15 @@ import { RolUserComponent } from './encargado/rol-user/rol-user.component';
     EncargadoUsersComponent,
     EditUserComponent,
     DeleteUserComponent,
-    RolUserComponent
+    RolUserComponent,
+    CrudOutcomesComponent,
+    CreateOutcomeComponent,
+    EditOutcomeCComponent,
+    CreateIncomeComponent,
+    ContadorIncomesComponent,
+    BudgetViewerComponent,
+    CrudIncomesComponent,
+    EditIncomeComponent
   ],
   imports: [
     MaterialModule,
@@ -96,7 +114,7 @@ import { RolUserComponent } from './encargado/rol-user/rol-user.component';
     MatGridListModule,
     AngularFireStorageModule,
   ],
-  providers: [{ provide: BUCKET, useValue: 'gs://redega-system.appspot.com' }],
+  providers: [{ provide: BUCKET, useValue: 'gs://redega-system.appspot.com' },MatSnackBarModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

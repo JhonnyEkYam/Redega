@@ -25,6 +25,7 @@ export class NavComponent implements OnInit {
   }
 
   closeSession(){
+    localStorage.clear();
     this.userService.logout();
   }
 }

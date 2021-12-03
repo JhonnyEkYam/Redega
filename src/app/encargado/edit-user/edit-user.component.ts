@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject, inject } from '@angular/core';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+
 
 @Component({
   selector: 'app-edit-user',
@@ -7,9 +9,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditUserComponent implements OnInit {
 
-  constructor() { }
+
+
+
+  constructor(
+    public dialogRef: MatDialogRef<EditUserComponent>
+) { 
+
+
+}
 
   ngOnInit(): void {
   }
+
+  onNoClick():void{
+    this.dialogRef.close();
+  }
+  
+
 
 }

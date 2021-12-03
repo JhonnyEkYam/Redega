@@ -6,6 +6,8 @@
 
 table {
     width: 100%;
+    border-radius: 4px;
+    overflow: hidden;
 }
 
 .options-users {
@@ -32,4 +34,11 @@ table {
 
 .options-colum {
     text-align: center;
+}
+
+.add-user {
+    background-color: #171717;
+    color: #ffffff;
+    margin: 10px 0;
+    float: right;
 }

@@ -1,0 +1,21 @@
+<form>
+    <h1 mat-dialog-title>Editar Ingreso</h1>
+  
+    <mat-form-field>
+      <mat-label>Monto ({{editedIncome.amount}})</mat-label>
+      <input matInput [(ngModel)]="editedIncome.amount" name="amount" [formControl]="dataamount" required>
+      <mat-error *ngIf="dataamount.invalid">{{getErrorMessage()}}</mat-error>
+    </mat-form-field>
+  
+    <mat-form-field>
+        <mat-label>{{editedIncome.date_income.seconds*1000 | date: 'MM/dd/yyyy'}}</mat-label>        
+        <input matInput [matDatepicker]="dp4" [(ngModel)]="editedIncome.date_income" name="date_income" disabled>
+        <mat-datepicker-toggle matSuffix [for]="dp4"></mat-datepicker-toggle>
+        <mat-datepicker #dp4 disabled="false" [startAt]="newDate(editedIncome.date_income.seconds*1000)"></mat-datepicker>
+    </mat-form-field>
+  
+    <div mat-dialog-actions>
+      <button mat-button (click)="onNoClick()">Cancel</button>
+      <button mat-button color="primary" [mat-dialog-close]="editedIncome" cdkFocusInitial>Save</button>
+    </div>
+  </form>

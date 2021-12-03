@@ -15,11 +15,13 @@ import {formatDate } from '@angular/common';
   styleUrls: ['./usuario-home.component.css']
 })
 export class UsuarioHomeComponent implements OnInit {
+  datauser1 = JSON.parse(localStorage.getItem('usuariobd') || '{}'); 
   user: string | undefined;
   today= new Date();
   jstoday = '';
-  datauser1: any;
+  
   hide = true;
+
   constructor(private router:Router,
     public userService: UserService,
     public auth: AngularFireAuth,
@@ -32,25 +34,6 @@ export class UsuarioHomeComponent implements OnInit {
 
 
   ngOnInit(): void {
-    //this.b();
-    // obtener usuario 
-    /*this.userService.getusers().subscribe(users=>{
-      
-    })*/
-    /*
-    this.coments = this.afs.collectionGroup('usuarios', ref => ref.where('user', '==', user?.uid))
-    .valueChanges({ idField: 'docId' });
-    */
-    const datauser = JSON.parse(localStorage.getItem('usuario') || '{}');
-    this.afs.collection('usuarios').doc(datauser.uid).valueChanges().subscribe(data => {
-      console.log(data);
-      localStorage.setItem('usuariobd', JSON.stringify(data));
-      
-    });
-    this.datauser1 = JSON.parse(localStorage.getItem('usuariobd') || '{}');
-
-   //this.a();
-   //this.c();
   }
 
   goToOutcomes(){
@@ -68,10 +51,5 @@ export class UsuarioHomeComponent implements OnInit {
 
     }
   }
-  // cargar imagen end
-  /*getuser(){
-    this.userService.userinfo();
-  }*/
-
   
 }

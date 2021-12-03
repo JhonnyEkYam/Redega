@@ -12,6 +12,7 @@ import { RegisterComponent } from './login/register/register.component';
 import { UsuarioHomeComponent } from './usuario/usuario-home/usuario-home.component';
 import { UsuarioOutcomesComponent } from './usuario/usuario-outcomes/usuario-outcomes.component';
 import { UsuarioProfileComponent } from './usuario/usuario-profile/usuario-profile.component';
+import { ContadorIncomesComponent } from './contador/contador-incomes/contador-incomes.component';
 //Guardian
 import { AngularFireAuthGuard,redirectUnauthorizedTo, redirectLoggedInTo } from '@angular/fire/compat/auth-guard';
 //Reglas de navegacion
@@ -29,6 +30,7 @@ const routes: Routes = [
   // Vistas de CONTADOR
   {path: 'contador/home', component: ContadorHomeComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin } },
   {path: 'contador/profile', component: ContadorProfileComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin } },
+  {path: 'contador/ingresos', component: ContadorIncomesComponent},
   // Vistas de ENCARGADO
   {path: 'encargado/home', component: EncargadoHomeComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin } },
   {path: 'encargado/profile', component: EncargadoProfileComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin } },

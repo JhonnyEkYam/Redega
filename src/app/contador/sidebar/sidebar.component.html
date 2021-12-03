@@ -1,31 +1,24 @@
 <div class="menu-options-container colorprimary">
-
-    <div class="title-company center">
-        <h2 class="company-name">REDEGA</h2>
-    </div>
-    <div class="user-profile center"><i class="fas fa-user-tie"></i><img src="" alt="" style="display: none;"
-            class="user-img"></div>
     <h3 class="menu-title">MENÚ PRINCIPAL</h3>
+    <div class="user-profile center">
+        <i class="fas fa-user-tie"></i>
+        <img src="" alt="" style="display: none;" class="user-img">
+    </div>
     <ul class="menu-options">
-        <li class="option">
-            <a href="" class="option-btn new"><i class="fas fa-plus-square"></i> Nuevo gasto</a>
+        <li class="option" (click)="goToIncomes()">
+            <i class="fas fa-chart-line"></i> Ver ingresos
         </li>
-        <li class="option">
-            <a href="" class="option-btn new"><i class="fas fa-plus-square"></i> Nuevo ingreso</a>
+        <li class="option" (click)="goToHome()">
+            <i class="fas fa-chart-line"></i> Ver gastos
         </li>
-        <li class="option">
-            <a href="" class="option-btn query"><i class="fas fa-search"></i> Consultar</a>
+        <li class="option" (click)="goToProfile()">
+            <i class="fas fa-search"></i> Consultar
         </li>
-        <li class="option">
-            <a href="" class="option-btn view">
-                <i class="fas fa-chart-line"></i> Ver gastos</a>
+        <li class="option" (click)="showCreateOutcomeDialog()">
+            <i class="fas fa-plus-square"></i> Nuevo gasto
+        </li>
+        <li class="option" (click)="showCreateIncomeDialog()">
+            <i class="fas fa-plus-square"></i> Nuevo ingreso
         </li>
     </ul>
-    <h3 class="menu-title">AYUDA</h3>
-    <ul class="menu-options">
-        <li class="option">
-            <a href="" class="option-btn new"><i class="fas fa-question-circle"></i>Soporte</a>
-        </li>
-    </ul>
-
 </div>
