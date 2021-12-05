@@ -150,7 +150,7 @@ export class CrudIncomesComponent implements OnInit {
           // debugger
           this.totalYearlyActiveIncomes = 0;
           incomes.forEach(income => {
-            debugger
+            // debugger
             this.totalYearlyActiveIncomes += Number(income.amount);
           })
           // debugger
@@ -158,7 +158,7 @@ export class CrudIncomesComponent implements OnInit {
         }
       } catch (err) {
         this.totalYearlyActiveIncomes = 0;
-        debugger
+        // debugger
       }
       return;
     })

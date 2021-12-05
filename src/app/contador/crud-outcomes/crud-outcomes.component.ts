@@ -276,7 +276,7 @@ export class CrudOutcomesComponent implements OnInit {
         }
       } catch (err) {
         this.totalYearlyActiveOutcomes = 0;
-        debugger
+        // debugger
       }
       return;
     })

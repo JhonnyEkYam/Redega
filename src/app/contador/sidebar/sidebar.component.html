@@ -1,9 +1,7 @@
-<div class="menu-options-container colorprimary">
-    <h3 class="menu-title">MENÚ PRINCIPAL</h3>
-    <div class="user-profile center">
-        <i class="fas fa-user-tie"></i>
-        <img src="" alt="" style="display: none;" class="user-img">
-    </div>
+<div class="menu-options-container colorprimary hamb">
+    <h3 class="menu-title">CONTADOR <div class="hamburguer" (click)="displayMenu()"></div></h3>
+    <h4 class="menu-title">Menú principal</h4>
+
     <ul class="menu-options">
         <li class="option" (click)="goToIncomes()">
             <i class="fas fa-chart-line"></i> Ver ingresos
@@ -19,6 +17,9 @@
         </li>
         <li class="option" (click)="showCreateIncomeDialog()">
             <i class="fas fa-plus-square"></i> Nuevo ingreso
+        </li>
+        <li class="option" (click)="closeSession()">
+            <i class="fas fa-plus-square"></i> Cerrar sesión
         </li>
     </ul>
 </div>

@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from "@angular/fire/compat/firestore";
 import { MatDialog } from '@angular/material/dialog';
-import { AngularFireStorage } from '@angular/fire/compat/storage';
 
 import { CreateOutcomeComponent } from '../crud-outcomes/create-outcome/create-outcome.component';
 import { CreateIncomeComponent } from '../crud-outcomes/create-income/create-income.component';
 import { Router } from "@angular/router";
+import { UserService } from '@app/shared/services/user.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -15,7 +15,8 @@ import { Router } from "@angular/router";
 export class SidebarComponent implements OnInit {
   private store: AngularFirestore;
 
-  constructor(public router: Router,public dialog: MatDialog, store: AngularFirestore, private storage: AngularFireStorage) { 
+  constructor(public router: Router,public dialog: MatDialog, store: AngularFirestore,
+    public userService: UserService) { 
     this.store = store;
   }
 
@@ -80,6 +81,11 @@ export class SidebarComponent implements OnInit {
     });
   }
 
+  displayMenu(){
+    let menu = document.querySelector('.menu-options-container')
+    menu?.classList.toggle('hamb');
+  }
+
 
   // Rutas
   goToHome(){
@@ -90,5 +96,10 @@ export class SidebarComponent implements OnInit {
   }
   goToIncomes(){
     this.router.navigate(['contador/ingresos']);
+  }
+
+  closeSession(){
+    localStorage.clear();
+    this.userService.logout();
   }
 }

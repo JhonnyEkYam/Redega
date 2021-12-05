@@ -1,66 +1,84 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 .menu-options-container {
+    position: relative;
     height: 100%;
     width: 200px;
     color: #ffff;
     box-shadow: 5px 0px 20px rgb(0, 0, 0, .2);
+    transition: .2s ease-in-out;
+    -webkit-transition: .2s ease-in-out;
+    -moz-transition: .2s ease-in-out;
+    -ms-transition: .2s ease-in-out;
+    -o-transition: .2s ease-in-out;
 }
 
-.menu-options-container h1,
-.menu-options-container h2,
-.menu-options-container h3,
-.menu-options-container h4 {
-    margin: 0;
-}
-
-.menu-options-container>div,
-.menu-options-container>h3 {
+.menu-title {
+    position: relative;
     padding: 1rem;
-}
-
-.company-name,
-.menu-title {
-    letter-spacing: .15rem;
-    font-size: 1.25rem;
-}
-
-.user-profile {
-    margin: 0 auto;
-    width: 95px;
-    height: 95px;
-    background-color: #EDEDED;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.user-profile>i {
-    font-size: 65px;
-    color: #444444;
-}
-
-.menu-title {
+    letter-spacing: 1px;
     font-style: italic;
+}
+
+.hamburguer {
+    display: none;
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+}
+
+.hamburguer::after {
+    content: '=';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    color: white;
+
+    display: flex;
+    place-content: center;
+    align-content: center;
+    vertical-align: middle;
+    align-items: center;
+    border-radius: 50px;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    -ms-border-radius: 50px;
+    -o-border-radius: 50px;
+}
+
+.hamburguer:active::after {
+    background-color: #888;
 }
 
 .menu-options {
     list-style: none;
-    margin: 0;
     margin-top: 1em;
 }
 
 .option {
     padding: .8rem 1rem;
-    transition: all .3s;
     display: flex;
     justify-content: flex-start;
     align-items: center;
-}
-
-.option>a {
     color: #ffff;
-    text-decoration: none;
+    transition: .2s ease-in-out;
+    -webkit-transition: .2s ease-in-out;
+    -moz-transition: .2s ease-in-out;
+    -ms-transition: .2s ease-in-out;
+    -o-transition: .2s ease-in-out;
 }
 
 .option i {
@@ -70,6 +88,35 @@
 
 .option:hover {
     cursor: pointer;
-    background-color: #444444;
+    background-color: #444;
     color: #ededed;
 }
+
+.option:active {
+    background-color: #555;
+    color: #ccc;
+}
+
+@media only screen and (max-width: 780px) {
+    .hamburguer {
+        display: initial;
+    }
+
+    .menu-options-container {
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .hamb {
+        height: 54px !important;
+        overflow: hidden;
+    }
+
+    .hamb>*:not(.menu-title) {
+
+        pointer-events: none;
+    }
+}
+
+@media only screen and (max-width: 480px) {}

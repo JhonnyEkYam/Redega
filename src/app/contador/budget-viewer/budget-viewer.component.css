@@ -1,22 +1,21 @@
-
-.center {
-    text-align: center;
-}
-
-.main-container{
-    position: relative;
-    padding: 0;
-    display: flex;
+*::selection{
+    background-color: #141414;
+    color: white;
 }
 
 .bar-amount {
     background-color: #ffff;
-    width: 80%;
-    height: 60px;
-    margin: 20px auto;
-    font-size: .8rem;
+    width: 700px;
+    height: 70px;
+    margin: 20px;
+    
+    font-weight: 600;
+    font-size: 1.08rem;
     letter-spacing: 1px;
-    max-width: 800px;
+
+    display: flex;
+    flex-direction: column;
+    
 }
 
 .title-bar {
@@ -25,17 +24,11 @@
     position: relative;
     padding: 0 3rem;
     display: flex;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
-}
+    
 
-.title-bar::after {
-    content: '';
-    height: 0px;
-    border-right: 20px solid transparent;
-    border-top: 30px solid #ffff;
-    position: absolute;
-    left: 0;
+    clip-path: polygon(20px 0%, 100% 0%, calc(100% - 20px) 100%, 0% 100%);
 }
 
 .progres-bar-content {
@@ -44,48 +37,54 @@
     background-color: #EDEDED;
     position: relative;
     color: #ffff;
-}
 
-.progres-bar-content::after {
-    content: '';
-    height: 0px;
-    border-left: 20px solid transparent;
-    border-top: 30px solid #ffff;
-    position: absolute;
-    right: 0;
-    top: 0;
-    z-index: 2;
-}
-
-.progres-bar-content::before {
-    content: '';
-    height: 0px;
-    border-right: 20px solid transparent;
-    border-bottom: 30px solid #ffff;
-    position: absolute;
-    left: 0;
-    z-index: 2;
+    clip-path: polygon(0% 0%, calc(100% - 20px) 0%, 100% 100%, 20px 100%);
 }
 
 .counter {
     position: absolute;
-    top: 0;
-    bottom: 0;
+    padding-left: 2em;
+    height: 100%;
     z-index: 2;
-    left: 0;
-    right: 0;
-    margin: auto;
     display: flex;
     align-items: center;
-    justify-content: center;
-    z-index: 2;
 }
 
 .progress {
-    transition: width .2s ease-in-out;
-    height: inherit;
-    width: 75%;
-    background-color: #185ADB;
     position: absolute;
     left: 0;
+    height: 100%;
+    width: 75%;
+    background-color: #185ADB;
+}
+
+
+@media only screen and (max-width: 980px){
+    .bar-amount{
+        width: 500px;
+    }
+}
+
+
+@media only screen and (max-width: 780px){
+    .bar-amount{
+        width: 480px;
+        height: 100px;
+    }
+    .title-bar{
+        height: auto;
+        width: fit-content;
+        height: auto;
+        position: relative;
+        padding: 7px 24px;
+    }
+    .progress{
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 480px){
+    .bar-amount{
+        width: 340px;
+    }
 }

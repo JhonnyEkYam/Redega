@@ -1,6 +1,12 @@
+*::selection{
+    background-color: #141414;
+    color: white;
+}
 .main, .container{
     display: flex;
     padding: 1em;
+}.container{
+    gap: 1em;
 }
 
 /** Lista de fechas */
@@ -52,6 +58,7 @@
     -ms-transition: .2s ease-in-out;
     -o-transition: .2s ease-in-out;
 }.dates li:hover { background: #ababab; }
+.dates li:active{ scale: (0.95); background: #888}
 .dates > *:first-child{
     border-radius: 5px 5px 0 0;
     -webkit-border-radius: 5px 5px 0 0;
@@ -81,6 +88,17 @@
     gap: 1em;
     margin-bottom: 1em;
 }
+.btn-container .title .date{
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+}
+.btn-container .title .amount{
+    font-weight: 800;
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+    font-style: italic;
+}
 
 .incomes-list{
     display: flex;
@@ -88,10 +106,12 @@
     gap: .2em;
     height: 20em;
     overflow-y: scroll;
-    width: 700px;
+    width: 500px;
     margin: 0 auto;
+    text-align: center;
 
-    border: 5px solid #bbb;
+    border: 3px solid #444;
+    padding: .2em ;
     box-shadow: 2px 3px 7px #4449;
     
     border-radius: 5px;
@@ -104,7 +124,7 @@
 /** Item de ingreso*/
 
 .income {
-    background: #bababa;
+    background: #beb;
     padding: .5em;
     cursor: default;
     display: flex;
@@ -124,7 +144,7 @@
 
 
 .income:hover {
-    background-color: #ccc;
+    background-color: #cfc;
 }
 
 .income .details {
@@ -148,4 +168,73 @@
     font-weight: 600;
     letter-spacing: 5px;
     color: #333;
+}
+
+
+
+
+@media only screen and (max-width: 780px) {
+    .main,
+    .container{
+        padding: 0;
+    }
+    .container{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .date-container{
+        width: 95%;
+        margin: auto;
+        color: #444;
+    }
+
+    .date-container .year{
+        width: 100%;
+    }
+    .date-container .dates{
+        padding: 0;
+    }
+    
+    .date-container .dates:hover{
+        box-shadow: none;
+        scale: 1;
+    }
+
+    .incomes-container, 
+    .incomes-list{
+        width: 100%;
+    }
+    .incomes-list{
+        height: auto;
+        min-height: 15em;
+        padding: 5px;
+        overflow: auto;
+        margin-bottom: 50px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    
+    .incomes-list{
+        font-size: .9rem;
+    }
+    .incomes-list .income{
+        border: 1px solid #ccc;
+        flex-direction: column-reverse;
+        align-items: start;
+        position: relative;
+        gap: 1em;
+    }
+    .incomes-list .income .icon{
+        position: absolute;
+        top: .5em;
+        right: .5em;
+    }
+    .incomes-list .title .date,
+    .incomes-list .title .amount{
+        display: block;
+        font-size: .8rem;
+    }
 }

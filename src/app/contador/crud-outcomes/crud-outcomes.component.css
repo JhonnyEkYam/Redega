@@ -1,6 +1,13 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 .main, .container{
     display: flex;
     padding: 1em;
+}.container{
+    gap: 1em;
 }
 
 .date-container .dates{
@@ -51,6 +58,7 @@
     -ms-transition: .2s ease-in-out;
     -o-transition: .2s ease-in-out;
 }.dates li:hover { background: #ababab; }
+.dates li:active { background: #bcbcbc; }
 .dates > *:first-child{
     border-radius: 5px 5px 0 0;
     -webkit-border-radius: 5px 5px 0 0;
@@ -106,16 +114,17 @@
     font-weight: 600;
     letter-spacing: 5px;
     color: #333;
+    text-align: center;
 }
 .outcomes-list{
     display: flex;
     flex-direction: column;
     gap: .2em;
-    height: 20em;
+    height: 18em;
     overflow-y: scroll;
-    width: 700px;
+    width: 500px;
     margin: 0 auto;
-    border: 5px solid #bbb;
+    border: 3px solid #444;
     box-shadow: 2px 3px 7px #4449;
     
     border-radius: 5px;
@@ -124,6 +133,7 @@
     -ms-border-radius: 5px;
     -o-border-radius: 5px;
 }
+
 .outcome {
     padding: .5em;
     cursor: default;
@@ -163,4 +173,71 @@
 
 .outcome .outcome-amount {
     flex: 0 0 auto;
+}
+
+
+@media only screen and (max-width: 780px) {
+    .main,
+    .container{
+        padding: 0;
+    }
+    .container{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .date-container{
+        width: 95%;
+        margin: auto;
+        color: #444;
+    }
+
+    .date-container .year{
+        width: 100%;
+    }
+    .date-container .dates{
+        padding: 0;
+    }
+    
+    .date-container .dates:hover{
+        box-shadow: none;
+        scale: 1;
+    }
+
+    .outcomes-container, 
+    .outcomes-list{
+        width: 100%;
+    }
+    .outcomes-list{
+        height: auto;
+        min-height: 15em;
+        padding: 5px;
+        overflow: auto;
+        margin-bottom: 50px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    
+    .outcomes-list{
+        font-size: .9rem;
+    }
+    .outcomes-list .outcome{
+        border: 1px solid #ccc;
+        flex-direction: column-reverse;
+        align-items: start;
+        position: relative;
+        gap: 1em;
+    }
+    .outcomes-list .outcome .icon{
+        position: absolute;
+        top: .5em;
+        right: .5em;
+    }
+    .outcomes-list .title .date,
+    .outcomes-list .title .amount{
+        display: block;
+        font-size: .8rem;
+    }
 }
