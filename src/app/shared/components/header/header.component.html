@@ -1,10 +1,60 @@
 <mat-toolbar class="headerc" color=primary>
-    <div class="typewriter">
-        <h1>REDEGA</h1>
-    </div>
-    <!--Comentado para que no se vea el menu en la pagina de inicio por el momento-->
-    <!--
-    <button mat-raised-button class="colorprimary" (click)="goToLogin()">Iniciar Sesión</button>
-    <button mat-raised-button class="colorprimary" (click)="goToRegister()">Registrarse</button>
-    -->
+    <mat-toolbar-row>
+        <span class="example-spacer"></span>
+        <div class="typewriter">
+            <h1>REDEGA</h1>
+        </div>
+        <span class="spacer"></span>
+        <!--
+        <button mat-icon-button [matMenuTriggerFor]="animals">
+            <mat-icon>account_circle</mat-icon>
+        </button>
+        <mat-menu #animals="matMenu">
+            <button mat-menu-item [matMenuTriggerFor]="usuario">Usuario</button>
+        </mat-menu>
+
+        <mat-menu #usuario="matMenu" yPosition="below">
+            <button mat-menu-item>Ir a Gastos</button>
+            <button mat-menu-item>Editar Perfil</button>
+            <button mat-menu-item>Cerrar Sesión</button>
+        </mat-menu>
+        -->
+        <div *ngIf="a==true">
+            <button *ngIf="auth1.user | async as user;" mat-icon-button class="example-icon" [matMenuTriggerFor]="menu">
+                <mat-icon>account_circle</mat-icon>
+            </button>
+            <!--- Menu -->
+
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item routerLink="">
+                  <mat-icon>home</mat-icon>
+                  <span>Ir a Inicio</span>
+                </button>
+
+                <ng-template [ngIf]="user1.rol>=2">
+                    <button mat-menu-item routerLink="/contador/home">
+                        <mat-icon>badge</mat-icon>
+                        <span>Ir a Contador</span>
+                    </button>
+                </ng-template>
+
+                <ng-template [ngIf]="user1.rol==3">
+                    <button mat-menu-item routerLink="/encargado/home">
+                        <mat-icon>supervisor_account</mat-icon>
+                        <span>Ir a Encargado</span>
+                    </button>
+                </ng-template>
+
+                <button mat-menu-item routerLink="/usuario/profile">
+                  <mat-icon>person_outline</mat-icon>
+                  <span>Editar Perfil</span>
+                </button>
+                <button mat-menu-item (click)="logout() ">
+                  <mat-icon>logout</mat-icon>
+                  <span>Cerrar Sesión</span>
+                </button>
+            </mat-menu>
+        </div>
+
+    </mat-toolbar-row>
 </mat-toolbar>

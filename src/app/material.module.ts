@@ -9,6 +9,8 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 
 
@@ -22,7 +24,9 @@ const myModules = [
   MatProgressBarModule,
   MatDividerModule,
   MatSnackBarModule,
-  MatExpansionModule
+  MatExpansionModule,
+  MatMenuModule,
+  MatTooltipModule
 ];
 
 @NgModule({
