@@ -1,48 +1,95 @@
 <app-nav></app-nav>
 <div class="main">
     <div class="username">
-        Perfil de USUARIO {{datauser.name}}
+        Perfil de {{datauser.name}}
     </div>
     <div class="profile-details-container">
-        <mat-card class="profile-details">
-            <mat-card-content class="profile-inputs">
-                <mat-form-field appearance="fill">
-                    <mat-label>Nombre_de_usuario</mat-label>
+        <mat-card class="profile-details" *ngIf="hide_spin; else elseBlock">
+
+            <mat-card-content class="profile-inputs" *ngIf="hide_spin1; else elseBlock1">
+                <span class="password-section"><h2>Nombre de Usuario</h2></span>
+                <mat-form-field appearance="outline">
+                    <mat-label>Nombre de usuario</mat-label>
                     <input matInput [type]="'text'" placeholder="{{datauser.name}}" value="{{datauser.name}}" [formControl]="dataname">
+                    <mat-error *ngIf="false==dataname.valid!">Requerido*</mat-error>
                 </mat-form-field>
-                <mat-form-field appearance="fill">
-                    <mat-label>correo_actual@gmail.com</mat-label>
-                    <input matInput [formControl]="email" value="{{datauser.email}}" placeholder="{{datauser.email}}">
-                    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+                <mat-card-actions>
+                    <button mat-raised-button disabled [disabled]="false==dataname.valid!" color=primary (click)="changename()">Guardar cambios</button>
+                    <button mat-raised-button color=warning (click)="none()">Cancelar</button>
+                </mat-card-actions>
+                <span class="password-section"><h2>Correo Electronico</h2></span>
+                <mat-form-field appearance="outline">
+                    <mat-label>Correo@template.com</mat-label>
+                    <input matInput [type]="'text'" placeholder="{{datauser.email}}" value="{{datauser.name}}" [formControl]="dataemail">
+                    <mat-error *ngIf="false==dataemail.valid">Requiere un Correo Electronico</mat-error>
                 </mat-form-field>
-                <span class="password-section">Cambie su contraseña si lo desea</span>
-                <mat-form-field appearance="fill">
+                <mat-card-actions>
+                    <button mat-raised-button disabled [disabled]="false==dataemail.valid!" color=primary (click)="changeemail()">Guardar cambios</button>
+                    <button mat-raised-button color=warning (click)="none()">No guardar y Regresar al Home</button>
+                </mat-card-actions>
+
+                <span class="password-section"><h2>Cambia su contraseña</h2></span>
+                <button mat-raised-button color=primary (click)="changepassword()">Restablecer su contraseña</button>
+                <!--<mat-form-field appearance="outline">
                     <mat-label>Introduzca su contraseña actual</mat-label>
-                    <input matInput [type]="hide1 ? 'password' : 'text'">
+                    <input matInput [type]="hide1 ? 'password' : 'text'" [formControl]=datapassword>
                     <button mat-icon-button matSuffix (click)="hide1 = !hide1" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide1">
                         <mat-icon>{{hide1 ? 'visibility_off' : 'visibility'}}</mat-icon>
                     </button>
                 </mat-form-field>
-                <mat-form-field appearance="fill">
+                -->
+                <!--
+                <mat-form-field appearance="outline">
                     <mat-label>Proporcione una nueva contraseña</mat-label>
-                    <input matInput [type]="hide1 ? 'password' : 'text'">
-                    <button mat-icon-button matSuffix (click)="hide1 = !hide1" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide1">
-                        <mat-icon>{{hide1 ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    <input matInput [type]="hide ? 'password' : 'text'" [formControl]=datapassword>
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                     </button>
+                    <mat-error *ngIf="false==datapassword.valid">Requiere un minimo de 6 Caracteres</mat-error>
                 </mat-form-field>
-                <mat-form-field appearance="fill">
+                <mat-form-field appearance="outline">
                     <mat-label>Repita su nueva contraseña</mat-label>
-                    <input matInput [type]="hide1 ? 'password' : 'text'">
+                    <input matInput [type]="hide1 ? 'password' : 'text'" [formControl]=datapassword1>
                     <button mat-icon-button matSuffix (click)="hide1 = !hide1" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide1">
                         <mat-icon>{{hide1 ? 'visibility_off' : 'visibility'}}</mat-icon>
                     </button>
+                    <mat-error *ngIf="false==datapassword1.valid">Requiere un minimo de 6 Caracteres</mat-error>
+                    <mat-error *ngIf="true==datap">Las contraseñas no coinciden</mat-error>
                 </mat-form-field>
+-->
+
             </mat-card-content>
+            <!--
             <div class="btn-container">
-                <button mat-raised-button color=primary (click)="update()">Guardar cambios</button>
+                <button mat-raised-button color=primary (click)="changepassword()">Guardar cambios</button>
                 <button mat-raised-button color=secondary (click)="goToHome()">Cancelar y regresar</button>
-                <!--<button mat-raised-button color=secondary (click)="getuser()">change</button>-->
             </div>
+            -->
         </mat-card>
     </div>
+    <ng-template #elseBlock>
+        <mat-card class="example-card display-middle">
+            <mat-card-title>Actualizando Información</mat-card-title>
+            <mat-card-content>
+                <p>Espere un momento</p>
+            </mat-card-content>
+            <mat-divider inset></mat-divider>
+            <mat-card-footer>
+                <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+            </mat-card-footer>
+        </mat-card>
+    </ng-template>
+
+    <ng-template #elseBlock1>
+        <mat-card class="example-card display-middle">
+            <mat-card-title>Enviando Información a su correo Electronico</mat-card-title>
+            <mat-card-content>
+                <p>Espere un momento</p>
+            </mat-card-content>
+            <mat-divider inset></mat-divider>
+            <mat-card-footer>
+                <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+            </mat-card-footer>
+        </mat-card>
+    </ng-template>
 </div>

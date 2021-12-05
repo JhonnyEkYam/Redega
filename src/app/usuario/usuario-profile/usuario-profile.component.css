@@ -1,11 +1,12 @@
-.main{
+.main {
     display: flex;
     flex-direction: column;
     align-items: stretch;
     gap: 1em;
     padding-top: 1em;
 }
-.username{
+
+.username {
     padding-left: 2em;
     font-size: 1.3em;
     font-weight: 600;
@@ -13,28 +14,31 @@
     color: black;
 }
 
-.profile-details-container{
-    display:flex;
+.profile-details-container {
+    display: flex;
     justify-content: center;
     gap: 1.5em;
     padding: 1em;
 }
 
-.profile-details{
+.profile-details {
     flex: 0 1;
     flex-basis: 700px;
     background: #ededed;
     padding: .7em;
 }
-.profile-details .profile-inputs{
+
+.profile-details .profile-inputs {
     display: flex;
     flex-direction: column;
 }
 
-.password-section{
+.password-section {
     margin-bottom: .5em;
     position: relative;
-}.password-section::after{
+}
+
+.password-section::after {
     content: '';
     position: absolute;
     bottom: 0;
@@ -44,7 +48,7 @@
     background: black;
 }
 
-.btn-container{
-    display:flex;
+.btn-container {
+    display: flex;
     gap: 1em;
 }

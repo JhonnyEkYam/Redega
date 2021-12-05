@@ -15,6 +15,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';// /datetime;
 // tablas
 import {MatGridListModule} from '@angular/material/grid-list';
+import { MatTableModule } from '@angular/material/table';  
 /** GENERALES */
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -44,6 +45,10 @@ import {AngularFireStorageModule, BUCKET } from '@angular/fire/compat/storage';
 import { RealtimetestComponent } from './general/testing/jey/realtimetest/realtimetest.component';
 //Nuevos componentes
 import { SidebarComponent } from './contador/sidebar/sidebar.component';
+import { EncargadoUsersComponent } from './encargado/encargado-users/encargado-users.component';
+import { EditUserComponent } from './encargado/edit-user/edit-user.component';
+import { DeleteUserComponent } from './encargado/delete-user/delete-user.component';
+import { RolUserComponent } from './encargado/rol-user/rol-user.component';
 import { CrudOutcomesComponent } from './contador/crud-outcomes/crud-outcomes.component';
 import { CreateOutcomeComponent } from './contador/crud-outcomes/create-outcome/create-outcome.component';
 import { EditOutcomeCComponent } from './contador/crud-outcomes/edit-outcome-c/edit-outcome-c.component';
@@ -75,6 +80,10 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     EditOutcomeComponent,
     RealtimetestComponent,
     SidebarComponent,
+    EncargadoUsersComponent,
+    EditUserComponent,
+    DeleteUserComponent,
+    RolUserComponent,
     CrudOutcomesComponent,
     CreateOutcomeComponent,
     EditOutcomeCComponent,
@@ -93,6 +102,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatInputModule,
     MatButtonModule,
     MatIconModule,
+    MatTableModule,
     MatDialogModule,
     FormsModule,
     ReactiveFormsModule,
