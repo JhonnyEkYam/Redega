@@ -44,8 +44,8 @@ export class SidebarComponent implements OnInit {
           newOutcome.date_log = new Date();
           newOutcome.date_update = new Date();
           newOutcome.status = Number(1);
-          newOutcome.monthYear = Number(monthYearValue);
           newOutcome.amount = Number(newOutcome.amount);
+          newOutcome.monthYear = Number(monthYearValue);
           this.store.collection('outcomes').add(newOutcome);
       }else{
         console.log("Egreso no registrado debido a errores")
@@ -59,9 +59,20 @@ export class SidebarComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(newIncome => {
       if(!isNaN(Number(newIncome.amount)) && (Number(newIncome.amount) > 0) && newIncome.date_income.toString().length > 1){
+          
+        let monthYearValue = Number(
+          newIncome.date_income.getFullYear()   
+           + '' + 
+           ((Number(newIncome.date_income.getMonth()) + 1) < 10 ? '0' : '')
+           + '' +     
+           (Number(newIncome.date_income.getMonth())+1)
+        );
+
+        
           newIncome.date_log = new Date();
           newIncome.date_update = new Date();
           newIncome.amount = Number(newIncome.amount);
+          newIncome.monthYear = Number(monthYearValue);
           this.store.collection('incomes').add(newIncome);
       }else{
         console.log("Ingreso no registrado debido a errores")

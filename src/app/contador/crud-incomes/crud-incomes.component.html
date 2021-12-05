@@ -1,23 +1,62 @@
-<div class="btn-container">
-    <h4> Total: {{total}}</h4>
-</div>
-<div class="incomes-list">
-    <div class="income" *ngFor="let income of incomes | async">
-        <div class="icon">&%</div>
-        <div class="details">
-            <span class="description">{{income.amount}}</span>
-            <span class="date">{{printDate(income.date_income)}}</span>
-        </div>
+<div class="main">
+    <div class="container">
 
-        <button mat-button color="primary" (click)="deleteLog(income.id)">
-            <span>
-                <mat-icon>delete</mat-icon>
+        <!-- fechas -->
+        <div class="date-container">
+            <span class="year">{{getCurrentYear()}}
+                <span class="yearly-total">${{totalYearlyActiveIncomes}}</span>
             </span>
-        </button>
-        <button mat-button color="primary" (click)="showEditDialog(income)">
-            <span>
-                <mat-icon>edit</mat-icon>
-            </span>
-        </button>
-    </div>
-</div>
+            <ul class="dates">
+                <li *ngFor="let month of monthsData; let indexMonth=index;">
+                    <span class="month" (click)="setView(indexMonth)">{{month}}</span>
+                </li>
+            </ul>
+        </div>
+        <!-- Fin de lista de fechas -->
+
+
+
+        <!-- Contenedor de la lista de ingresos -->
+        <div class="incomes-container">
+            <div class="btn-container">
+                <span class="title">
+                    <span class="date"> {{getMonth(selectedMonth)}}, {{getCurrentYear()}} </span>
+                    <span class="amount"> ${{total}}</span>
+                </span>
+            </div>
+
+            <!-- lista de ingresos -->
+            <div *ngIf="isFilled(); else emptyMonth" class="incomes-list">
+
+                <div class="income" *ngFor="let income of incomes | async">
+                    <div class="icon">&%</div>
+                    <div class="details">
+                        <span class="description">${{income.amount}}</span>
+                        <span class="date">{{printDate(income.date_income)}}</span>
+                    </div>
+
+                    <button mat-button color="primary" (click)="deleteLog(income.id)">
+                        <span>
+                            <mat-icon>delete</mat-icon>
+                        </span>
+                    </button>
+                    <button mat-button color="primary" (click)="showEditDialog(income)">
+                        <span>
+                            <mat-icon>edit</mat-icon>
+                        </span>
+                    </button>
+                </div>
+            </div>
+
+            <ng-template #emptyMonth> <!-- template en caso de no haber gastos-->
+                <div class="incomes-list">
+                    <div class="no-income">
+                        No hay ingresos registrados en {{getMonth(selectedMonth)}}
+                    </div>
+                </div>
+            </ng-template>
+
+        </div> <!-- Fin de contenedor de lista de ingresos -->
+
+    </div> <!-- Fin de container -->
+</div><!-- fin de main -->

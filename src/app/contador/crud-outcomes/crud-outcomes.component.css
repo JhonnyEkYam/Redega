@@ -1,12 +1,8 @@
-.main{
+.main, .container{
     display: flex;
     padding: 1em;
 }
 
-.container{
-    display: flex;
-    gap: 1em;
-}
 .date-container .dates{
     border-radius: 5px;
     -webkit-border-radius: 5px;

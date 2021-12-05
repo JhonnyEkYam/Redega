@@ -24,7 +24,7 @@ export class CrudOutcomesComponent implements OnInit {
   total: number = 0; // Monto mensual del mes seleccionado
   today = new Date(); // Fecha actual
   month = new Date().getMonth(); // Mes actual
-  selectedMonth = this.month;
+  selectedMonth = this.month; // Mes seleccionado de la lista de meses
   monthsData;
 
   constructor(public dialog: MatDialog, store: AngularFirestore) {

@@ -33,7 +33,8 @@ export class CreateIncomeComponent implements OnInit {
     amount: '',
     date_income: '',
     date_log: '',
-    date_update: ''
+    date_update: '',
+    monthYear: Number(0)
   };
 
   onNoClick(): void {
