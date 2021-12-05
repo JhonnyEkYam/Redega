@@ -6,6 +6,14 @@
     padding-top: 1em;
 }
 
+.center {
+    text-align: center!important
+}
+
+.right {
+    float: right!important
+}
+
 .username {
     padding-left: 2em;
     font-size: 1.3em;

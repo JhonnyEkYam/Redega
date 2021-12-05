@@ -68,7 +68,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
           } else if(datap.rol == 2){
             this.router.navigate(['contador/home']);
           } else if(datap.rol == 3){
-            this.router.navigate(['encargado/home']);
+            this.router.navigate(['encargado/users']);
           }
         }, 4000);
         
