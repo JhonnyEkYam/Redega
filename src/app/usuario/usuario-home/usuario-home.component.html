@@ -3,102 +3,49 @@
 
     <div class="main" loading="lazy">
         <div class="username">
-            <h1>Hello {{ datauser1.name }}!</h1>
+            <h1>Bienvenida/o {{ datauser1.name }}!</h1>
             <div>
-                Ultima Conexión el: {{datauser1.date_update}}
+                Se conectó por última vez el : {{datauser1.date_update}}
             </div>
         </div>
 
-
-        <!--
-            <div class="add-task">
-            <input id="fileUpload" type="file" accept=".png, .jpg, .jpeg" multiple (change)="cargarImagen($event)">
-            <p>Subir una imagen de un gasto</p>
-            <label for="fileUpload" class="custom-btn btn-6"><span>Subir</span></label>
-            <!--a -->
-        <!--<img src="{{imagenes[0]}}" alt="">
-        </div>-->
         <div class="container">
             <div class="outcomes-viewer">
                 <div class="details">
                     <div class="title">GASTOS</div>
                     <button class="more-btn" (click)="goToOutcomes()">></button>
                 </div>
-                <div class="amount">$191480</div>
+                <div class="amount">${{total}}</div>
                 <div class="last-transactions">
                     <div class="title">
                         Últimas transacciones
                     </div>
 
                     <!-- GASTOS -->
+                    <div *ngIf="isFilled(); else emptyMonth" class="outcomes-list">
+                        <div class="outcome" *ngFor="let outcome of outcomes | async">
+                            <div class="icon">&%</div>
+                            <div class="details">
+                                <span class="description">{{outcome.concept}}</span>
+                                <span class="date">{{printDate(outcome.date_outcome)}}</span>
+                            </div>
 
-                    <div class="outcome">
-                        <div class="icon">&%</div>
-                        <div class="details">
-                            <span class="description">GASOLINA</span>
-                            <span class="date">12 de noviembre de 2021 8:45 PM</span>
-                        </div>
-                        <div class="outcome-amount">
-                            $51550.00
+                            <div class="outcome-amount">
+                                ${{outcome.amount}}
+                            </div>
+
+                            <a mat-raised-button href="{{outcome.photo}}" target="_blank">Factura</a>
                         </div>
                     </div>
 
-                    <div class="outcome">
-                        <div class="icon">&%</div>
-                        <div class="details">
-                            <span class="description">GASOLINA</span>
-                            <span class="date">12 de noviembre de 2021 8:45 PM</span>
+                    <ng-template #emptyMonth>
+                        <div class="outcomes-list">
+                            <div class="no-outcome">
+                                No hay gastos registrados
+                            </div>
                         </div>
-                        <div class="outcome-amount">
-                            $545.00
-                        </div>
-                    </div>
-
-                    <div class="outcome">
-                        <div class="icon">&%</div>
-                        <div class="details">
-                            <span class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae totam facilis numquam commodi fuga dolor quis quaerat quia voluptatum sit, facere quo aliquam cum cumque fugit? Quia earum quis error!</span>
-                            <span class="date">12 de noviembre de 2021 8:45 PM</span>
-                        </div>
-                        <div class="outcome-amount">
-                            $550.00
-                        </div>
-                    </div>
-
-                    <div class="outcome">
-                        <div class="icon">&%</div>
-                        <div class="details">
-                            <span class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus, nisi.</span>
-                            <span class="date">12 de noviembre de 2021 8:45 PM</span>
-                        </div>
-                        <div class="outcome-amount">
-                            $660.00
-                        </div>
-                    </div>
-
-                    <div class="outcome">
-                        <div class="icon">&%</div>
-                        <div class="details">
-                            <span class="description">Lorem ipsum dolor sit amet.</span>
-                            <span class="date">12 de noviembre de 2021 8:45 PM</span>
-                        </div>
-                        <div class="outcome-amount">
-                            $750.00
-                        </div>
-                    </div>
-
-                    <div class="outcome">
-                        <div class="icon">&%</div>
-                        <div class="details">
-                            <span class="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facere amet consequuntur expedita quaerat rem iste consectetur illum sed, exercitationem, ipsa consequatur error culpa quibusdam hic assumenda officiis rerum fugiat qui autem. Expedita quae eveniet minus deserunt voluptatibus sed accusamus architecto?</span>
-                            <span class="date">12 de noviembre de 2021 8:45 PM</span>
-                        </div>
-                        <div class="outcome-amount">
-                            $550.00
-                        </div>
-                    </div>
-
-                </div>
+                    </ng-template>
+                </div> <!-- Fin de contenedor de lista de gastos -->
             </div>
         </div>
     </div>
