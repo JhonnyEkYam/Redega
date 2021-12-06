@@ -2,11 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '@app/shared/services/user.service';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import firebase from 'firebase/compat/app';
-//
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
+import { AngularFirestore} from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
 import { formatDate } from '@angular/common';
+//
+import { AngularFireMessaging } from '@angular/fire/compat/messaging';
+//
+import { getMessaging, getToken,onMessage,deleteToken } from "firebase/messaging";
 
 
 @Component({
@@ -33,7 +35,8 @@ export class UsuarioHomeComponent implements OnInit {
     public userService: UserService,
     public auth: AngularFireAuth,
     public afs: AngularFirestore,
-    store: AngularFirestore
+    store: AngularFirestore,
+    private afMessaging: AngularFireMessaging,
   ) {
     this.jstoday = formatDate(this.today, 'dd-MM-yyyy hh:mm:ss a', 'en-US', '-0500');
 
@@ -57,9 +60,61 @@ export class UsuarioHomeComponent implements OnInit {
     this.setTotal();
   }
 
-
   ngOnInit(): void {
+    const messaging = getMessaging();
   }
+
+//Solo dios sabe como funciona
+  requestPermission() {    
+    Notification.requestPermission().then((permission) => {
+      if (permission === 'granted') {
+        console.log('Notification permission granted.');
+        // TODO(developer): Retrieve a registration token for use with FCM.
+        // ...
+        const a =this.ggt();
+
+      } else {
+        console.log('Unable to get permission to notify.');
+      }
+    });
+    
+  }
+  nonotifications() {
+  deleteToken(this.aa()).then(() => {
+    console.log('Token deleted.');
+    // ...
+  }).catch((err) => {
+    console.log('Unable to delete token. ', err);
+  });
+}
+
+  ggt(){
+  const messaging = getMessaging();
+  getToken(messaging, { vapidKey: 'BEw2CPhAynKDbjr6kVupawisvAEcBIikgzrzVkXuKW3lYXoZWwj3stXaCyNOJusP8zTUe7G4awhypUSYQkrzY_g' }).then((currentToken) => {
+    if (currentToken) {
+        // Send the token to your server and update the UI if necessary
+        // ...
+    } else {
+        // Show permission request UI
+        console.log('No registration token available. Request permission to generate one.');
+        // ...
+    }
+}).catch((err) => {
+    console.log('An error occurred while retrieving token. ', err);
+    // ...
+});
+}
+aa(){
+  const messaging = getMessaging();
+  return messaging;
+}
+/*
+const messaging = getMessaging();
+onMessage(messaging, (payload) => {
+  console.log('Message received. ', payload);
+  // ...
+});
+*/
 
   goToOutcomes() {
     this.router.navigate(['/usuario/gastos']);

@@ -21,7 +21,7 @@
             <div class="btn-container">
                 <span class="title">
                     <span class="date"> {{getMonth(selectedMonth)}}, {{getCurrentYear()}} </span>
-                    <span class="amount"> ${{total}}</span>
+                <span class="amount"> ${{total}}</span>
                 </span>
             </div>
 
@@ -29,7 +29,9 @@
             <div *ngIf="isFilled(); else emptyMonth" class="incomes-list">
 
                 <div class="income" *ngFor="let income of incomes | async">
-                    <div class="icon">&%</div>
+                    <div class="icon">
+                        <mat-icon>attach_money</mat-icon>
+                    </div>
                     <div class="details">
                         <span class="description">${{income.amount}}</span>
                         <span class="date">{{printDate(income.date_income)}}</span>
@@ -48,7 +50,8 @@
                 </div>
             </div>
 
-            <ng-template #emptyMonth> <!-- template en caso de no haber gastos-->
+            <ng-template #emptyMonth>
+                <!-- template en caso de no haber gastos-->
                 <div class="incomes-list">
                     <div class="no-income">
                         No hay ingresos registrados en {{getMonth(selectedMonth)}}
@@ -56,7 +59,10 @@
                 </div>
             </ng-template>
 
-        </div> <!-- Fin de contenedor de lista de ingresos -->
+        </div>
+        <!-- Fin de contenedor de lista de ingresos -->
 
-    </div> <!-- Fin de container -->
-</div><!-- fin de main -->
+    </div>
+    <!-- Fin de container -->
+</div>
+<!-- fin de main -->

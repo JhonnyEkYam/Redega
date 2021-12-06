@@ -43,6 +43,7 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { environment } from '../environments/environment';
 import {AngularFireStorageModule, BUCKET } from '@angular/fire/compat/storage';
 import { RealtimetestComponent } from './general/testing/jey/realtimetest/realtimetest.component';
+import { AngularFireMessagingModule } from '@angular/fire/compat/messaging';
 //Nuevos componentes
 import { SidebarComponent } from './contador/sidebar/sidebar.component';
 import { EncargadoUsersComponent } from './encargado/encargado-users/encargado-users.component';
@@ -113,6 +114,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     AngularFirestoreModule,
     MatGridListModule,
     AngularFireStorageModule,
+    AngularFireMessagingModule
   ],
   providers: [{ provide: BUCKET, useValue: 'gs://redega-system.appspot.com' },MatSnackBarModule],
   bootstrap: [AppComponent]

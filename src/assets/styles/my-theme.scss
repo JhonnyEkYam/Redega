@@ -17,8 +17,8 @@ $my-theme: mat.define-light-theme(( color: ( primary: $my-primary, accent: $my-a
 @include mat-core();
 // GAMA DE COLORES
 $my-primary-color: ( 200: #3c3c3c, 500: #000000, 700: #171717, contrast: ( 200: #000000, 500: #ffffff, 700: #ffffff, ));
-$my-accent-color: ( 200: #6f6f6f, 500: #1d1d1d, 700: #444444, contrast: ( 200: #000000, 500: #ffffff, 700: #ffffff, ));
-$my-warn-color: ( 200: #ff5131, 500: #9c0000, 700: #d60000, contrast: ( 200: #000000, 500: #000000, 700: #000000, ));
+$my-accent-color: ( 200: #6f6f6f, 500: #1d1d1d, 700: #444444, contrast: ( 200: #fff, 500: #ffffff, 700: #ffffff, ));
+$my-warn-color: ( 200: #ff5131, 500: #9c0000, 700: #d60000, contrast: ( 200: #fff, 500: #fff, 700: #fff, ));
 // PALETA DE COLORES
 $my-palette-primary: mat-palette($my-primary-color);
 $my-palette-accent: mat-palette($my-accent-color);
