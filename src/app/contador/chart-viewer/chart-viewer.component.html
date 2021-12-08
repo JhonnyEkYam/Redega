@@ -1,0 +1,37 @@
+<div class="main">
+    <div class="title">
+        Gastos e ingresos en {{getCurrentYear()}}
+    </div>
+    <div class="title">A partir de {{getMonth(startingFromThisMonth)}}</div>
+    <div class="info-setter">
+        <table class="info">
+            <td class="header">
+                <tr class="incomes">Ingresos</tr>
+                <tr class="outcomes">Gastos</tr>
+                <tr class="budget">Disponible</tr>
+            </td>
+            <td class="body">
+                <tr class="incomes">${{amountIncome}}</tr>
+                <tr class="outcomes">${{amountOutcome}}</tr>
+                <tr class="budget">${{budget}}</tr>
+            </td>
+        </table>
+
+        <!-- fechas -->
+        <div class="date-container">
+            <span class="year">{{getCurrentYear()}}</span>
+            <ul class="dates">
+                <li *ngFor="let month of monthsData; let indexMonth=index;">
+                    <span class="month" (click)="setView(indexMonth)">{{month}}</span>
+                </li>
+            </ul>
+        </div>
+        <!-- Fin de lista de fechas -->
+
+    </div>
+
+    <div class="limiter">
+        <canvas id="myChart" width="400" height="400">
+        </canvas>
+    </div>
+</div>

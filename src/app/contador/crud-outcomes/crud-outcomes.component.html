@@ -3,8 +3,7 @@
 
         <!-- fechas -->
         <div class="date-container">
-            <span class="year">{{getCurrentYear()}} <span class="yearly-total">
-                    ${{totalYearlyActiveOutcomes}}</span></span>
+            <span class="year">{{getCurrentYear()}}</span>
             <ul class="dates">
                 <li *ngFor="let month of monthsData; let indexMonth=index;">
                     <span class="month" (click)="setView(indexMonth)">{{month}}</span>

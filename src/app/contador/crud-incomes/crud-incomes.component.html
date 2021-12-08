@@ -4,7 +4,6 @@
         <!-- fechas -->
         <div class="date-container">
             <span class="year">{{getCurrentYear()}}
-                <span class="yearly-total">${{totalYearlyActiveIncomes}}</span>
             </span>
             <ul class="dates">
                 <li *ngFor="let month of monthsData; let indexMonth=index;">
@@ -21,7 +20,7 @@
             <div class="btn-container">
                 <span class="title">
                     <span class="date"> {{getMonth(selectedMonth)}}, {{getCurrentYear()}} </span>
-                <span class="amount"> ${{total}}</span>
+                    <span class="amount"> ${{total}}</span>
                 </span>
             </div>
 

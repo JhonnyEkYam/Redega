@@ -59,6 +59,7 @@ import { BudgetViewerComponent } from './contador/budget-viewer/budget-viewer.co
 import { CrudIncomesComponent } from './contador/crud-incomes/crud-incomes.component';
 import { EditIncomeComponent } from './contador/crud-incomes/edit-income/edit-income.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { ChartViewerComponent } from './contador/chart-viewer/chart-viewer.component';
 
 @NgModule({
   declarations: [
@@ -92,7 +93,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     ContadorIncomesComponent,
     BudgetViewerComponent,
     CrudIncomesComponent,
-    EditIncomeComponent
+    EditIncomeComponent,
+    ChartViewerComponent
   ],
   imports: [
     MaterialModule,
