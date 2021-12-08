@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./encargado-profile.component.css']
 })
 export class EncargadoProfileComponent implements OnInit {
-
+  datap = JSON.parse(localStorage.getItem('usuariobd') || '{}');
   constructor() { }
 
   ngOnInit(): void {

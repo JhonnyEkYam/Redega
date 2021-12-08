@@ -150,7 +150,17 @@ import { MatSnackBar } from '@angular/material/snack-bar';
     }
 
     checkrole(){
-
+      const datap = JSON.parse(localStorage.getItem('usuariobd') || '{}');
+      switch(datap.rol){
+        case 1:
+          return 1;
+        case 2:
+          return 2;
+        case 3:
+          return 3;
+        default:
+          return false;
+      }
       /*
       rol == 1 -> usuario
       rol == 2 -> contador

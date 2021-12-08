@@ -21,7 +21,7 @@ import { Router } from '@angular/router';
 
 export class EncargadoHomeComponent implements OnInit {
 
-
+  datap = JSON.parse(localStorage.getItem('usuariobd') || '{}');
   constructor( private router:Router,) {
  
 

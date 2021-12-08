@@ -1,4 +1,4 @@
-<mat-card class="container-info">
+<mat-card class="container-info" *ngIf="datap.rol==3; else elseBlock">
     <button class="add-user" mat-raised-button>Añadir usuario</button>
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
@@ -54,3 +54,7 @@
 
 
 </mat-card>
+
+<ng-template #elseBlock>No tienes permiso
+    <mat-icon color="warn">block</mat-icon>
+</ng-template>

@@ -1,50 +1,54 @@
-<div class="main">
-  <div class="container">
+<div class="main" *ngIf="datap.rol>=2; else elseBlock">
+    <div class="container">
 
-    <!-- fechas -->
-    <div class="date-container">
-      <div class="year">{{getCurrentYear()}} <span class="yearly-total"> ${{totalYearlyActiveOutcomes}}</span></div>
-      <ul class="dates">
-        <li *ngFor="let month of monthsData; let indexMonth=index;">
-          <span class="month" (click)="setView(indexMonth)">{{month}}</span>
-        </li>
-      </ul>
-    </div>
-
-    <!-- Fin de lista de fechas -->
-    <div class="outcomes-container">
-      <div class="last-transactions">
-        <span class="title">
-          Últimas transacciones de 
-          <span class="date">{{getMonth(selectedMonth)}}</span>
-          <span class="amount">${{total}}</span>
-        </span>
-
-        <!-- GASTOS -->
-        <div *ngIf="isFilled(); else emptyMonth" class="outcomes-list">
-          <div class="outcome" *ngFor="let outcome of outcomes | async">
-            <div class="icon">&%</div>
-            <div class="details">
-              <span class="description">{{outcome.concept}}</span>
-              <span class="date">{{printDate(outcome.date_outcome)}}</span>
-            </div>
-
-            <div class="outcome-amount">
-              ${{outcome.amount}}
-            </div>
-
-            <a mat-raised-button href="{{outcome.photo}}" target="_blank">Factura</a>
-          </div>
+        <!-- fechas -->
+        <div class="date-container">
+            <div class="year">{{getCurrentYear()}} <span class="yearly-total"> ${{totalYearlyActiveOutcomes}}</span></div>
+            <ul class="dates">
+                <li *ngFor="let month of monthsData; let indexMonth=index;">
+                    <span class="month" (click)="setView(indexMonth)">{{month}}</span>
+                </li>
+            </ul>
         </div>
 
-        <ng-template #emptyMonth>
-          <div class="outcomes-list">
-            <div class="no-outcome">
-              No hay gastos registrados en {{getMonth(selectedMonth)}}
+        <!-- Fin de lista de fechas -->
+        <div class="outcomes-container">
+            <div class="last-transactions">
+                <span class="title">
+          Últimas transacciones de 
+          <span class="date">{{getMonth(selectedMonth)}}</span>
+                <span class="amount">${{total}}</span>
+                </span>
+
+                <!-- GASTOS -->
+                <div *ngIf="isFilled(); else emptyMonth" class="outcomes-list">
+                    <div class="outcome" *ngFor="let outcome of outcomes | async">
+                        <div class="icon">&%</div>
+                        <div class="details">
+                            <span class="description">{{outcome.concept}}</span>
+                            <span class="date">{{printDate(outcome.date_outcome)}}</span>
+                        </div>
+
+                        <div class="outcome-amount">
+                            ${{outcome.amount}}
+                        </div>
+
+                        <a mat-raised-button href="{{outcome.photo}}" target="_blank">Factura</a>
+                    </div>
+                </div>
+
+                <ng-template #emptyMonth>
+                    <div class="outcomes-list">
+                        <div class="no-outcome">
+                            No hay gastos registrados en {{getMonth(selectedMonth)}}
+                        </div>
+                    </div>
+                </ng-template>
             </div>
-          </div>
-        </ng-template>
-      </div> <!-- Fin de contenedor de lista de gastos -->
+            <!-- Fin de contenedor de lista de gastos -->
+        </div>
     </div>
-  </div>
 </div>
+<ng-template #elseBlock>No tienes permiso
+    <mat-icon color="warn">block</mat-icon>
+</ng-template>

@@ -21,6 +21,8 @@ export class UsuarioOutcomesComponent implements OnInit {
   month = new Date().getMonth(); // Mes actual
   selectedMonth = this.month; // Mes seleccionado de la lista de meses
   monthsData;
+  //data
+  datap = JSON.parse(localStorage.getItem('usuariobd') || '{}');
 
   constructor( store: AngularFirestore) {
 

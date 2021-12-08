@@ -1,1 +1,7 @@
-<p>encargado-profile works!</p>
+<div class="main-container" *ngIf="datap.rol==3; else elseBlock">
+    a
+</div>
+
+<ng-template #elseBlock>No tienes permiso
+    <mat-icon color="warn">block</mat-icon>
+</ng-template>

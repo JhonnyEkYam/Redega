@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./contador-home.component.css']
 })
 export class ContadorHomeComponent implements OnInit {
-
+  datap = JSON.parse(localStorage.getItem('usuariobd') || '{}');
   constructor() { }
 
   ngOnInit(): void {
