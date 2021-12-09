@@ -4,6 +4,23 @@
         <app-chart-viewer></app-chart-viewer>
     </div>
 </div>
-<ng-template #elseBlock>No tienes permiso
-    <mat-icon color="warn">block</mat-icon>
+<ng-template #elseBlock>
+    <mat-card class="example-card display-middle1">
+        <mat-card-title-group>
+            <mat-card-title>Error</mat-card-title>
+            <mat-card-subtitle>Sin permiso</mat-card-subtitle>
+            <img mat-card-lg-image src="https://material.angular.io/assets/img/examples/shiba2.jpg">
+        </mat-card-title-group>
+        <mat-card-content>
+            {{longText}}
+        </mat-card-content>
+        <mat-divider inset></mat-divider>
+        <mat-card-actions>
+            <button mat-button routerLink="/">Regresar al Inicio</button>
+            <button mat-button (click)="close()">Cerrar Sesión</button>
+        </mat-card-actions>
+        <mat-card-footer>
+            <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+        </mat-card-footer>
+    </mat-card>
 </ng-template>

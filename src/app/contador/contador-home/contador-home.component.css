@@ -1,14 +1,15 @@
-*{
+* {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
 }
 
-.main-container{
+.main-container {
     position: relative;
     padding: 0;
     display: flex;
 }
+
 .main-interface {
     flex: 1 1 auto;
     background-color: #ffff;
@@ -16,16 +17,26 @@
     flex-direction: column;
 }
 
-@media only screen and (max-width: 780px){
-    .main-container{
+@media only screen and (max-width: 780px) {
+    .main-container {
         display: flex;
         flex-direction: column;
     }
 }
 
-@media only screen and (max-width: 480px){
-    .main-container{
+@media only screen and (max-width: 480px) {
+    .main-container {
         display: flex;
         flex-direction: column;
     }
+}
+
+.example-card {
+    max-width: 400px;
+    margin-bottom: 8px;
+}
+
+mat-card {
+    margin: 8px;
+    position: absolute;
 }

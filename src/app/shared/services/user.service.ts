@@ -65,10 +65,11 @@ import { MatSnackBar } from '@angular/material/snack-bar';
           const datap = JSON.parse(localStorage.getItem('usuariobd') || '{}');
           if(datap.rol == 1){
             this.router.navigate(['usuario/home']);
+            this.data();
           } else if(datap.rol == 2){
             this.router.navigate(['contador/home']);
           } else if(datap.rol == 3){
-            this.router.navigate(['encargado/users']);
+            this.router.navigate(['encargado/home']);
           }
         }, 4000);
         
@@ -94,7 +95,14 @@ import { MatSnackBar } from '@angular/material/snack-bar';
         }
     );
     }
-
+    //Mensajes de error
+    data(){
+      const datap = JSON.parse(localStorage.getItem('usuariobd') || '{}');
+      this.openmsg('Bienvenido '+datap.name,'X');
+      setTimeout(() => {
+        this.dataa();
+      },60000);
+    }
     
     //Cuando te registras por primera vez este login se activa
     login1(dataemail:any,datapassword:any,dataname:any){
@@ -203,6 +211,15 @@ import { MatSnackBar } from '@angular/material/snack-bar';
     this._snackBar.open(message, action, {
       duration: 3000,});
   }
+  dataa(){
+    this.auth.signOut().then(() => {
+    /*localStorage.removeItem('usuario');
+    localStorage.removeItem('usuariobd');*/
+    localStorage.clear();
+    this.router.navigate(['/']);
+    }
+);
+}
     
 
 }

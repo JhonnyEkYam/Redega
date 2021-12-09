@@ -69,7 +69,16 @@ export class EncargadoUsersComponent implements OnInit {
 
     
   }
- 
+  longText = `Por el momento no hay ningún contenido en esta sección. Porque no tiene acceso a esta sección.
+  Si crees que esto es un error, por favor contacta con el administrador.`;
+  cerrar(){
+  localStorage.removeItem('usuariobd');
+  window.location.href = '/';
+  }
+  close(){
+    localStorage.clear();
+    window.location.href = '/';
+  } 
 
 }
 

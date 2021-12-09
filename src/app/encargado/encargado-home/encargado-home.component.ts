@@ -22,17 +22,18 @@ import { Router } from '@angular/router';
 export class EncargadoHomeComponent implements OnInit {
 
   datap = JSON.parse(localStorage.getItem('usuariobd') || '{}');
-  constructor( private router:Router,) {
- 
-
-  }
+  longText = `Por el momento no hay ningún contenido en esta sección. Porque no tiene acceso a esta sección.
+  Si crees que esto es un error, por favor contacta con el administrador.`;
+  constructor() { }
 
   ngOnInit(): void {
-  
-      this.router.navigate(['encargado/users']);
-    
   }
-
+  cerrar(){
+  localStorage.removeItem('usuariobd');
+  window.location.href = '/';
+  }
+  close(){
+    localStorage.clear();
+    window.location.href = '/';
+  }
 }
-
-
