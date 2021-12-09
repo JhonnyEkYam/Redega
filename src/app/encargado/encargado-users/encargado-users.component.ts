@@ -4,6 +4,7 @@ import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument 
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { EditUserComponent } from "../edit-user/edit-user.component";
+import { DeleteUserComponent } from "../delete-user/delete-user.component";
 import { Observable, Timestamp } from "rxjs";
 
 @Component({
@@ -37,17 +38,38 @@ export class EncargadoUsersComponent implements OnInit {
       width:'350px',
       data:data
     });
-  
-   
+    dialogRef.componentInstance.data = data;
+    
   }
 
   updateUser(id: string, data: any): Promise<void> {
     return this.store.doc(id).update(data);
   }
 
-  deleteUser(id: string): Promise<void> {
-    return this.store.doc(id).delete();
+  rolUser( data: any): Promise<void> {
+    return this.store.doc(data.id).update(data);
   }
+
+  deleteUser(data: any ){
+    const dialogRef = this.dialog.open(DeleteUserComponent ,{
+      width:'350px',
+      data:data
+    });
+    const confirmDelete = false;
+    dialogRef.componentInstance.dataUser = data;
+    dialogRef.componentInstance.confirmDeleteUser = confirmDelete;
+    console.log('Hola:'+confirmDelete);
+    console.log('Deleted'+ data.id);
+    
+    dialogRef.afterClosed().subscribe(confirmDeleteUser => {
+      console.log(`Dialog result: ${confirmDeleteUser}`); // Pizza!
+      this.store.doc('usuarios/' +data.id).delete();
+    });
+    
+
+    
+  }
+ 
 
 }
 

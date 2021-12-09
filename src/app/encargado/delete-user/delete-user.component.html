@@ -1,1 +1,7 @@
-<p>delete-user works!</p>
+<h1 mat-dialog-title>
+    ¿Estas seguro de eliminar a {{dataUser.name}} ?</h1>
+
+<div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Cancel</button>
+    <button mat-raised-button class="save-btn" [mat-dialog-close]="dataUser" [mat-dialog-close]="confirmDeleteUser">Guardar</button>
+</div>

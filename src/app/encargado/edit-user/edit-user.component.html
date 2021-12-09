@@ -3,11 +3,11 @@
 <div mat-dialog-content>
     <mat-form-field class="input-field" appearance="fill">
         <mat-label>Nombre</mat-label>
-        <input matInput placeholder="">
+        <input matInput [(ngModel)]="data.name" placeholder="">
     </mat-form-field>
     <mat-form-field class="input-field" appearance="fill">
         <mat-label>Correo</mat-label>
-        <input matInput placeholder="">
+        <input matInput [(ngModel)]="data.email" placeholder="">
     </mat-form-field>
 </div>
 <div mat-dialog-actions>

@@ -10,7 +10,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 export class EditUserComponent implements OnInit {
 
 
-
+  data: any;
 
   constructor(
     public dialogRef: MatDialogRef<EditUserComponent>
