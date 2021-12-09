@@ -14,7 +14,7 @@ import { UsuarioOutcomesComponent } from './usuario/usuario-outcomes/usuario-out
 import { UsuarioProfileComponent } from './usuario/usuario-profile/usuario-profile.component';
 import { ContadorIncomesComponent } from './contador/contador-incomes/contador-incomes.component';
 //Guardian
-import { AngularFireAuthGuard,redirectUnauthorizedTo, redirectLoggedInTo } from '@angular/fire/compat/auth-guard';
+import { AngularFireAuthGuard,redirectUnauthorizedTo, redirectLoggedInTo, canActivate } from '@angular/fire/compat/auth-guard';
 //Reglas de navegacion
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['']);
 const redirectLoggedInToUsers = () => redirectLoggedInTo(['usuario/home']);
@@ -22,23 +22,23 @@ const redirectLoggedInToUsers = () => redirectLoggedInTo(['usuario/home']);
 
 const routes: Routes = [
   // Vistas generales
-  {path: 'test-gastos', component: TestingComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin } },
+  {path: 'test-gastos', component: TestingComponent, ...canActivate(redirectUnauthorizedToLogin) },
   {path: 'realtimetest', component: RealtimetestComponent},
   // Vistas de Login y de registro
-  {path: '', component: LoginComponent, canActivate: [AngularFireAuthGuard] , data: { authGuardPipe: redirectLoggedInToUsers }},
-  {path: 'register', component: RegisterComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectLoggedInToUsers } },
+  {path: '', component: LoginComponent, ...canActivate(redirectLoggedInToUsers)},
+  {path: 'register', component: RegisterComponent, ...canActivate(redirectLoggedInToUsers)  },
   // Vistas de CONTADOR
-  {path: 'contador/home', component: ContadorHomeComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin } },
-  {path: 'contador/profile', component: ContadorProfileComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin } },
-  {path: 'contador/ingresos', component: ContadorIncomesComponent},
+  {path: 'contador/home', component: ContadorHomeComponent, ...canActivate(redirectUnauthorizedToLogin) },
+  {path: 'contador/profile', component: ContadorProfileComponent, ...canActivate(redirectUnauthorizedToLogin) },
+  {path: 'contador/ingresos', component: ContadorIncomesComponent, ...canActivate(redirectUnauthorizedToLogin) },
   // Vistas de ENCARGADO
-  {path: 'encargado/home', component: EncargadoHomeComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin } },
-  {path: 'encargado/profile', component: EncargadoProfileComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin } },
-  {path: 'encargado/users', component: EncargadoUsersComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin } },
+  {path: 'encargado/home', component: EncargadoHomeComponent, ...canActivate(redirectUnauthorizedToLogin) },
+  {path: 'encargado/profile', component: EncargadoProfileComponent, ...canActivate(redirectUnauthorizedToLogin) },
+  {path: 'encargado/users', component: EncargadoUsersComponent, ...canActivate(redirectUnauthorizedToLogin) },
   // Vistas de Usuario
-  {path: 'usuario/home', component: UsuarioHomeComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin } },
-  {path: 'usuario/profile', component: UsuarioProfileComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin } },
-  {path: 'usuario/gastos', component: UsuarioOutcomesComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin } }
+  {path: 'usuario/home', component: UsuarioHomeComponent, ...canActivate(redirectUnauthorizedToLogin) },
+  {path: 'usuario/profile', component: UsuarioProfileComponent, ...canActivate(redirectUnauthorizedToLogin) },
+  {path: 'usuario/gastos', component: UsuarioOutcomesComponent, ...canActivate(redirectUnauthorizedToLogin) }
 ];
 
 @NgModule({

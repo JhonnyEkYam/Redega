@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 <mat-card class="container-info">
     <button class="add-user" mat-raised-button (click)="editUser(data)">Añadir usuario</button>
+=======
+<mat-card class="container-info" *ngIf="datap.rol==3; else elseBlock">
+    <button class="add-user" mat-raised-button>Añadir usuario</button>
+>>>>>>> 267ed68ef9958fcedd37c4364972a4d283620ac5
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
         <!--- Note that these columns can be defined in any order.
@@ -54,3 +59,7 @@
 
 
 </mat-card>
+
+<ng-template #elseBlock>No tienes permiso
+    <mat-icon color="warn">block</mat-icon>
+</ng-template>

@@ -15,12 +15,12 @@ import { getAuth } from "firebase/auth";
 })
 export class UsuarioProfileComponent implements OnInit {
   panelOpenState = false;
+  datap = JSON.parse(localStorage.getItem('usuariobd') || '{}');
   /*private Usuariodoc: AngularFirestoreDocument<UsuariosInterface>;
   user: Observable<UsuariosInterface> | any;
   */
   datauser: any;
   datauser1: any;
-  datap=false;
   hide_spin = true;
   hide_spin1 = true;
   dataname = new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(50)]);

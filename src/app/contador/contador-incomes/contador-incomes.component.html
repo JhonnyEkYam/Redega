@@ -1,7 +1,12 @@
-<div class="main-container">
+<div class="main-container" *ngIf="datap.rol>=2; else elseBlock">
     <app-sidebar></app-sidebar>
     <div class="main-interface">
         <app-budget-viewer></app-budget-viewer>
         <app-crud-incomes></app-crud-incomes>
     </div>
 </div>
+<ng-template #elseBlock>No tienes permiso
+    <div class="NoPermiso">
+        <mat-icon color="warn">block</mat-icon>
+    </div>
+</ng-template>

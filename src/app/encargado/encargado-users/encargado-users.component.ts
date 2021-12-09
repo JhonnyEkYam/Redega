@@ -19,7 +19,7 @@ export class EncargadoUsersComponent implements OnInit {
   displayedColumns: string[] = [ 'name' ,'email','rol', 'options'];
   //dataSource = ELEMENT_DATA;
   data: any;
-
+  datap = JSON.parse(localStorage.getItem('usuariobd') || '{}');
   
   constructor(public dialog: MatDialog, store: AngularFirestore, private storage: AngularFireStorage) {
     this.store = store;
